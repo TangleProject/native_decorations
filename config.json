@@ -3,8 +3,7 @@
   "mod": {
     "id": "template",
     "name": "Template Mod",
-    "version": "0.0",
-    "authors": ["Developer"]
+    "version": "0.0"
   },
   "dependencies": {
     "minecraft": "1.17.1",

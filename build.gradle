@@ -26,7 +26,6 @@ def mod = [
   id: config.get("mod").get("id"),
   name: config.get("mod").get("name"),
   version: config.get("mod").get("version"),
-  version: config.get("mod").get("authors")
 ]
 
 //  Package name
@@ -177,9 +176,17 @@ loom {
 }
 
 processResources {
+  inputs.property "mod_id", mod.id
+  inputs.property "mod_name", mod.name
+  inputs.property "package", packageGroup
+  inputs.property "minecraft_version", dep_versions.minecraft
   inputs.property "version", project.version
 
   filesMatching("fabric.mod.json") {
+    expand "mod_id": mod.id
+    expand "mod_name": mod.name
+    expand "package": packageGroup
+    expand "minecraft_version": dep_versions.minecraft
     expand "version": project.version
   }
 }

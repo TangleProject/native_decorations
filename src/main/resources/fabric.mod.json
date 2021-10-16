@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "${mod_id}",
   "version": "${version}",
-  "name": "Template",
-  "description": "A template mod",
+  "name": "${mod_name}",
+  "description": "Mod description",
   "authors": [
-    "Sqaaakoi"
+    "Example"
   ],
   "contact": {
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/${mod_id}/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "sqaaakoi.minecraft_mods.template.Main"
+      "${package}.${mod_id}.Main"
     ]
   },
   "mixins": [
-    "template.mixins.json"
+    "${mod_id}.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*"
   },
   "suggests": {
-    "minecraft": "1.17.x"
+    "minecraft": "${minecraft_version}"
   }
 }
