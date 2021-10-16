@@ -1,0 +1,231 @@
+//  Sqaaakoi's Fabric Mod Build Script
+//  Version 1.0
+
+plugins {
+  id 'fabric-loom' version '0.8-SNAPSHOT'
+  id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
+
+import groovy.json.JsonSlurper
+
+//  Build time
+def date = new Date()
+def time = date.format("yyyy-MM-dd'T'HH:mm:ssZ")
+def version_time = date.format("dd-MM-yyyy'_'HH-mm-ss")
+def folder_time = date.format("dd-MM-yyyy'/'HH-mm-ss")
+
+//  Configuration
+
+def config = new JsonSlurper().parseText(new File("./config.json"))
+
+//  Mod metadata
+def mod = [
+  id: config.get("mod").get("id"),
+  name: config.get("mod").get("name"),
+  version: config.get("mod").get("version"),
+  version: config.get("mod").get("authors")
+]
+
+//  Package name
+def packageGroup = config.get("package")
+
+//  Versions
+def dep_versions = [
+  minecraft: config.get("dependencies").get("minecraft"),
+  mappings: config.get("dependencies").get("mappings"),
+  fabric_loader: config.get("dependencies").get("fabric_loader"),
+  fabric_api: config.get("dependencies").get("fabric_api"),
+]
+
+// Fuck all this shit code below.
+
+//  Minecraft user login
+//  Warning: By enabling the boolean below or using the argument -Pl=; you understand that this script will access your minecraft launcher_settings.json file.
+//  This script does not have any way to prevent your user token from being printed so be careful to not leak it.
+boolean autoLogin = true
+// Override for launcher_settings.json file.
+def loginFile = null
+
+def loginArg = project.getProperties().get("l")
+def profile = [
+  use: true,
+  login: false,
+  name: "",
+  id: "",
+  token: "",
+  type: ""
+]
+
+// What the fuck is this shit.
+if ((loginArg == null && autoLogin) || loginArg == ";") {
+  File accountFile = null;
+  if (loginFile == null) {
+    def home = System.getProperty("user.home", ".")
+    def os = System.getProperty("os.name").toLowerCase(Locale.ENGLISH)
+    def gameDir = home + "/.minecraft"
+    if (os.contains("win") && System.getenv("appdata") != null) {
+      gameDir = System.getenv("appdata") + "/.minecraft"
+    } else if (osType.contains("mac")) {
+      gameDir = home + "/Library/Application Support/minecraft"
+    }
+    accountFile = new File(gameDir, "launcher_accounts.json")
+  } else {
+    accountFile = new File(loginFile);
+  }
+  if (!accountFile.exists()) {
+    profile.use = false
+  } else {
+    def json = new JsonSlurper()
+    def accounts = json.parseText(accountFile.text)
+    def account = accounts.get("accounts").get(accounts.get("activeAccountLocalId"))
+    profile.name = account.get("minecraftProfile").get("name")
+    profile.id = account.get("minecraftProfile").get("id")
+    // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
+    profile.token = account.get("accessToken")
+    profile.type = account.get("type").toLowerCase()
+    profile.login = true
+  }
+} else if ((loginArg == null && !autoLogin) || loginArg == "/") {
+  profile.use = false
+} else {
+  profile.name = loginArg
+}
+
+//  Setup run folder from template
+if (!file('runClient').exists()) {
+  copy {
+    from("run_template")
+    into("runClient")
+  }
+}
+
+def release = project.getProperties().get("release") != null
+
+version = mod.version + (release ? "" : "+" + version_time)
+group = packageGroup
+archivesBaseName = mod.id
+libsDirName = "../out/${folder_time}"
+
+compileJava {
+    options.compilerArgs << "-Xlint"
+    options.compilerArgs << "-Xlint:-processing"
+}
+
+repositories {
+  // Add repositories to retrieve artifacts from in here.
+  // You should only use this when depending on other mods because
+  // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+  // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+  // for more information about repositories.
+  flatDir {
+      dirs 'libs'
+  }
+}
+
+dependencies {
+  //  Nullable annotations
+  implementation 'com.google.code.findbugs:jsr305:3.0.2'
+  // To change the versions see the dep_versions object
+  minecraft "com.mojang:minecraft:${dep_versions.minecraft}"
+  mappings "net.fabricmc:yarn:" + dep_versions.map + ":v2"
+  modImplementation "net.fabricmc:fabric-loader:${dep_versions.fabric_loader}"
+
+  // Fabric API. This is technically optional, but you probably want it anyway.
+  modImplementation "net.fabricmc.fabric-api:fabric-api:${dep_versions.fabric_api}"
+
+for (libfile in config.get("mod").get("libraries")) {
+  modImplementation name: libfile
+}
+
+
+  // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
+  // You may need to force-disable transitiveness on them.
+}
+
+loom {
+  def awf = file("src/main/resources/${mod.id}.accesswidener")
+  if (awf.exists()) {
+    if (!awf.text.replace("\n", "").replace("\r", "").replace(" ", "").isEmpty()) {
+      accessWidener = awf
+    }
+  }
+  runs {
+    client {
+      inherit client
+      name = "Run Client"
+      runDir "runClient"
+      remapMod = true
+      if (profile.use) {
+        programArgs "--username", profile.name
+        if (profile.login) {
+          programArgs "--uuid", profile.id
+          programArgs "--accessToken", profile.token
+          programArgs "--userType", profile.type
+        }
+      }
+    }
+    server {
+      inherit server
+      name = "Run Server"
+      runDir "runServer"
+      remapMod = true
+    }
+  }
+}
+
+processResources {
+  inputs.property "version", project.version
+
+  filesMatching("fabric.mod.json") {
+    expand "version": project.version
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+  // ensure that the encoding is set to UTF-8, no matter what the system default is
+  // this fixes some edge cases with special characters not displaying correctly
+  // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+  // If Javadoc is generated, this must be specified in that task too.
+  it.options.encoding = "UTF-8"
+
+  it.options.release = 16
+}
+
+java {
+  // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+  // if it is present.
+  // If you remove this line, sources will not be generated.
+  withSourcesJar()
+}
+
+jar {
+  from("LICENSE") {
+    rename { "${it}_${project.archivesBaseName}"}
+  }
+}
+
+// configure the maven publication
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      // add all the jars that should be included when publishing to maven
+      artifact(remapJar) {
+        builtBy remapJar
+      }
+      artifact(sourcesJar) {
+        builtBy remapSourcesJar
+      }
+    }
+  }
+
+  // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+  repositories {
+    // Add repositories to publish to here.
+    // Notice: This block does NOT have the same function as the block in the top level.
+    // The repositories here will be used for publishing your artifact, not for
+    // retrieving dependencies.
+  }
+}
