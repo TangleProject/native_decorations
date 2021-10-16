@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "${mod_id}",
-  "version": "${version}",
-  "name": "${mod_name}",
+  "id": "@mod_id@",
+  "version": "@version@",
+  "name": "@mod_name@",
   "description": "Mod description",
   "authors": [
     "Example"
   ],
   "contact": {
   },
-  "icon": "assets/${mod_id}/icon.png",
+  "icon": "assets/@mod_id@/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${package}.${mod_id}.Main"
+      "@package@.Main"
     ]
   },
   "mixins": [
-    "${mod_id}.mixins.json"
+    "@mod_id@.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*"
   },
   "suggests": {
-    "minecraft": "${minecraft_version}"
+    "minecraft": "@minecraft_version@"
   }
 }

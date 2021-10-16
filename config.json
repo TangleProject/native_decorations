@@ -1,5 +1,5 @@
 {
-  "package": "example.minecraft_mods"
+  "package": "example.minecraft_mods",
   "mod": {
     "id": "template",
     "name": "Template Mod",

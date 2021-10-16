@@ -1,4 +1,4 @@
-//  Sqaaakoi's Fabric Mod Build Script
+//  example's Fabric Mod Build Script
 //  Version 1.0
 
 plugins {
@@ -19,24 +19,24 @@ def folder_time = date.format("dd-MM-yyyy'/'HH-mm-ss")
 
 //  Configuration
 
-def config = new JsonSlurper().parseText(new File("./config.json"))
+def config = (new JsonSlurper()).parseText(new File("./config.json").text)
 
 //  Mod metadata
 def mod = [
   id: config.get("mod").get("id"),
   name: config.get("mod").get("name"),
-  version: config.get("mod").get("version"),
+  version: config.get("mod").get("version")
 ]
 
 //  Package name
-def packageGroup = config.get("package")
+def packageGroup = config.get("package") + "." + mod.id
 
 //  Versions
 def dep_versions = [
   minecraft: config.get("dependencies").get("minecraft"),
   mappings: config.get("dependencies").get("mappings"),
   fabric_loader: config.get("dependencies").get("fabric_loader"),
-  fabric_api: config.get("dependencies").get("fabric_api"),
+  fabric_api: config.get("dependencies").get("fabric_api")
 ]
 
 // Fuck all this shit code below.
@@ -129,7 +129,7 @@ dependencies {
   implementation 'com.google.code.findbugs:jsr305:3.0.2'
   // To change the versions see the dep_versions object
   minecraft "com.mojang:minecraft:${dep_versions.minecraft}"
-  mappings "net.fabricmc:yarn:" + dep_versions.map + ":v2"
+  mappings "net.fabricmc:yarn:" + dep_versions.mappings + ":v2"
   modImplementation "net.fabricmc:fabric-loader:${dep_versions.fabric_loader}"
 
   // Fabric API. This is technically optional, but you probably want it anyway.
@@ -176,18 +176,19 @@ loom {
 }
 
 processResources {
-  inputs.property "mod_id", mod.id
-  inputs.property "mod_name", mod.name
-  inputs.property "package", packageGroup
-  inputs.property "minecraft_version", dep_versions.minecraft
-  inputs.property "version", project.version
-
   filesMatching("fabric.mod.json") {
-    expand "mod_id": mod.id
-    expand "mod_name": mod.name
-    expand "package": packageGroup
-    expand "minecraft_version": dep_versions.minecraft
-    expand "version": project.version
+    filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+      "mod_id": mod.id,
+      "mod_name": mod.name,
+      "package": packageGroup,
+      "minecraft_version": dep_versions.minecraft,
+      "version": project.version
+    ])
+  }
+  filesMatching(mod.id + ".mixins.json") {
+    filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+      "package": packageGroup
+    ])
   }
 }
 

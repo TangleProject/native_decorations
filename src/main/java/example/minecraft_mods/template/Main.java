@@ -1,4 +1,4 @@
-package sqaaakoi.minecraft_mods.template;
+package example.minecraft_mods.template;
 
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
