@@ -43,7 +43,6 @@ def dep_versions = [
 
 //  Minecraft user login
 //  Warning: By enabling the boolean below or using the argument -Pl=; you understand that this script will access your minecraft launcher_settings.json file.
-//  This script does not have any way to prevent your user token from being printed so be careful to not leak it.
 boolean autoLogin = true
 // Override for launcher_settings.json file.
 def loginFile = null
@@ -83,7 +82,7 @@ if ((loginArg == null && autoLogin) || loginArg == ";") {
     profile.name = account.get("minecraftProfile").get("name")
     profile.id = account.get("minecraftProfile").get("id")
     // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
-    profile.token = account.get("accessToken")
+    // profile.token = account.get("accessToken")
     profile.type = account.get("type").toLowerCase()
     profile.login = true
   }
