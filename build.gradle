@@ -1,5 +1,10 @@
-//  example's Fabric Mod Build Script
-//  Version 1.0
+//  Sqaaakois Fabric Mod Build Script
+//  Version 1.1 for Minecraft 1.18
+
+plugins {
+  id 'fabric-loom' version '0.10-SNAPSHOT'
+  id 'maven-publish'
+}
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
@@ -15,12 +20,6 @@ def folder_time = date.format("dd-MM-yyyy'/'HH-mm-ss")
 //  Configuration
 
 def config = (new JsonSlurper()).parseText(new File("./config.json").text)
-
-// Load plugins here, as we want to be able to configure Loom version
-plugins {
-  id 'fabric-loom' version config.get("dependencies").get("loom")
-  id 'maven-publish'
-}
 
 //  Mod metadata
 def mod = [
@@ -156,7 +155,7 @@ loom {
       inherit client
       name = "Run Client"
       runDir "runClient"
-      remapMod = true
+      remapArchives = true
       if (profile.use) {
         programArgs "--username", profile.name
         if (profile.login) {
@@ -170,7 +169,7 @@ loom {
       inherit server
       name = "Run Server"
       runDir "runServer"
-      remapMod = true
+      remapArchives = true
     }
   }
 }
