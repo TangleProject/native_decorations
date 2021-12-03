@@ -1,13 +1,8 @@
 //  example's Fabric Mod Build Script
 //  Version 1.0
 
-plugins {
-  id 'fabric-loom' version '0.8-SNAPSHOT'
-  id 'maven-publish'
-}
-
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 import groovy.json.JsonSlurper
 
@@ -20,6 +15,12 @@ def folder_time = date.format("dd-MM-yyyy'/'HH-mm-ss")
 //  Configuration
 
 def config = (new JsonSlurper()).parseText(new File("./config.json").text)
+
+// Load plugins here, as we want to be able to configure Loom version
+plugins {
+  id 'fabric-loom' version config.get("dependencies").get("loom")
+  id 'maven-publish'
+}
 
 //  Mod metadata
 def mod = [
@@ -192,13 +193,8 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-  // ensure that the encoding is set to UTF-8, no matter what the system default is
-  // this fixes some edge cases with special characters not displaying correctly
-  // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
-  // If Javadoc is generated, this must be specified in that task too.
   it.options.encoding = "UTF-8"
-
-  it.options.release = 16
+  it.options.release = 17
 }
 
 java {
