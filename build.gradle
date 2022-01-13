@@ -1,5 +1,14 @@
 //  Sqaaakois Fabric Mod Build Script
-//  Version 1.1 for Minecraft 1.18
+//  Version 1.2 for Minecraft 1.18.1
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    implementation 'com.github.javakeyring:java-keyring:1.0.1'
+  }
+}
 
 plugins {
   id 'fabric-loom' version '0.10-SNAPSHOT'
@@ -10,6 +19,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 import groovy.json.JsonSlurper
+import com.github.javakeyring.Keyring
 
 //  Build time
 def date = new Date()
@@ -82,7 +92,8 @@ if ((loginArg == null && autoLogin) || loginArg == ";") {
     profile.name = account.get("minecraftProfile").get("name")
     profile.id = account.get("minecraftProfile").get("id")
     // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
-    // profile.token = account.get("accessToken")
+    Keyring kr = Keyring.create();
+    profile.token = Keyring.getPassword("MCL|" + account.get("minecraftProfile").get("localId"))
     profile.type = account.get("type").toLowerCase()
     profile.login = true
   }
