@@ -23,5 +23,6 @@
     "fabricloader": ">=0.7.4",
     "fabric": "*",
     "minecraft": ">=@minecraft_version@"
-  }
+  },
+  "license": "MIT"
 }
