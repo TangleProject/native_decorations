@@ -1,7 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "PPP"
+    "P",
+    "P",
+    "P"
   ],
   "key": {
     "P": {
@@ -9,7 +11,7 @@
     }
   },
   "result": {
-    "item": "template:example_item",
+    "item": "native_decorations:example_tool",
     "count": 1
   }
 }

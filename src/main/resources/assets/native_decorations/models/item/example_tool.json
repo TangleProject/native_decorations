@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "template:item/example_tool"
+    "layer0": "native_decorations:item/example_tool"
   }
 }

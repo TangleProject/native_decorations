@@ -1,8 +1,8 @@
 {
-  "package": "example.minecraft_mods",
+  "package": "sqaaakoi.minecraft_mods",
   "mod": {
-    "id": "template",
-    "name": "Template Mod",
+    "id": "native_decorations",
+    "name": "Native Decorations",
     "version": "0.0"
   },
   "dependencies": {

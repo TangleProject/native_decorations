@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "template:item/example_item"
+    "layer0": "native_decorations:item/example_item"
   }
 }

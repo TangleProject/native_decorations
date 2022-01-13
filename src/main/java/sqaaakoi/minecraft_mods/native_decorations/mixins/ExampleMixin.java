@@ -1,6 +1,6 @@
-package example.minecraft_mods.template.mixins;
+package sqaaakoi.minecraft_mods.native_decorations.mixins;
 
-import example.minecraft_mods.template.Main;
+import sqaaakoi.minecraft_mods.native_decorations.Main;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Overwrite;
