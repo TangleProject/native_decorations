@@ -6,7 +6,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    implementation 'com.github.javakeyring:java-keyring:1.0.1'
+    classpath 'com.github.javakeyring:java-keyring:1.0.1'
   }
 }
 
@@ -53,7 +53,7 @@ def dep_versions = [
 
 //  Minecraft user login
 //  Warning: By enabling the boolean below or using the argument -Pl=; you understand that this script will access your minecraft launcher_settings.json file.
-boolean autoLogin = true
+boolean autoLogin = config.get("login")
 // Override for launcher_settings.json file.
 def loginFile = null
 
@@ -93,7 +93,7 @@ if ((loginArg == null && autoLogin) || loginArg == ";") {
     profile.id = account.get("minecraftProfile").get("id")
     // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
     Keyring kr = Keyring.create();
-    profile.token = Keyring.getPassword("MCL|" + account.get("minecraftProfile").get("localId"))
+    profile.token = Keyring.getPassword("MCL|" + account.get("minecraftProfile").get("localId"), "")
     profile.type = account.get("type").toLowerCase()
     profile.login = true
   }

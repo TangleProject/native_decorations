@@ -11,5 +11,6 @@
     "fabric_loader": "0.12.12",
     "fabric_api": "0.45.1+1.18",
     "libraries": []
-  }
+  },
+  "login": true
 }
