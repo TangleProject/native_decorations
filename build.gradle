@@ -93,7 +93,7 @@ if ((loginArg == null && autoLogin) || loginArg == ";") {
     profile.id = account.get("minecraftProfile").get("id")
     // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
     Keyring kr = Keyring.create();
-    profile.token = Keyring.getPassword("MCL|" + account.get("minecraftProfile").get("localId"), "")
+    profile.token = kr.getPassword("MCL|" + account.get("minecraftProfile").get("localId"), "")
     profile.type = account.get("type").toLowerCase()
     profile.login = true
   }
