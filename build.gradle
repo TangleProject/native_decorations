@@ -24,7 +24,7 @@ import groovy.json.JsonSlurper
 //  Build time
 def date = new Date()
 def time = date.format("yyyy-MM-dd'T'HH:mm:ssZ")
-def version_time = date.format("dd-MM-yyyy'_'HH-mm-ss")
+def version_time = date.format("dd-MM-yyyy'-'HH-mm-ss")
 def folder_time = date.format("dd-MM-yyyy'/'HH-mm-ss")
 
 //  Configuration
