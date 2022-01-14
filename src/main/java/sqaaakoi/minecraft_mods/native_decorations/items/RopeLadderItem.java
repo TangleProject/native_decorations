@@ -27,7 +27,7 @@ public class RopeLadderItem extends BlockItem {
     PlayerEntity pl = context.getPlayer();
     World w = context.getWorld();
     BlockState bs = w.getBlockState(p);
-    if (bs.getBlock().equals(this.getBlock())) {
+    if (bs.getBlock().equals(this.getBlock()) && !pl.shouldCancelInteraction()) {
       p = p.offset(Direction.DOWN);
       while (w.isInBuildLimit(p)) {
         if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock) {
