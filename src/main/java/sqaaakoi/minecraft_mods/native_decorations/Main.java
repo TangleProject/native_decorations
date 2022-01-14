@@ -2,6 +2,7 @@ package sqaaakoi.minecraft_mods.native_decorations;
 
 import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
 import sqaaakoi.minecraft_mods.native_decorations.items.Items;
+import sqaaakoi.minecraft_mods.native_decorations.loot.LootTablePatcher;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,5 +16,6 @@ public class Main implements ModInitializer {
     LOG.debug("Loaded mod {}", ID);
     Blocks.register();
     Items.register();
+    LootTablePatcher.patch();
   }
 }
