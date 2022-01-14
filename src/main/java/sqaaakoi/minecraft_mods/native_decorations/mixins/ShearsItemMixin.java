@@ -45,18 +45,25 @@ public class ShearsItemMixin {
         PlayerEntity pl = context.getPlayer();
         ItemStack is = context.getStack();
         if (pl instanceof ServerPlayerEntity) {
-            Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)pl, pos, is);
+          Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)pl, pos, is);
         }
         BlockSoundGroup k = bs.getBlock().getSoundGroup(bs);
         w.syncWorldEvent(pl, WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(bs));
         w.setBlockState(pos, bs.with(BushyBushBlock.BUSHY_BUSH, false));
         if (pl != null) {
-            is.damage(1, pl, pl_ -> pl_.sendToolBreakStatus(context.getHand()));
+          is.damage(1, pl, pl_ -> pl_.sendToolBreakStatus(context.getHand()));
         }
         cir.setReturnValue(ActionResult.success(w.isClient));
       } else {
         cir.setReturnValue(ActionResult.PASS);
       }
+    }
+  }
+
+  @Inject(method = "getMiningSpeedMultiplier(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/BlockState;)F", at = @At("HEAD"), cancellable = true)
+  public void getMiningSpeedMultiplier(ItemStack stack, BlockState state, CallbackInfoReturnable<ActionResult> cir) {
+    if (state.isOf(Blocks.rope_ladder)) {
+      return 3.0f;
     }
   }
 

@@ -36,7 +36,7 @@ public class Blocks {
   public static LogPileBlock warped_stem_pile = new LogPileBlock(LogPileBlock.NETHER_SETTINGS);
   public static FakeFlowerBlock paeonia = new FakeFlowerBlock(Block.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
   public static FlowerPotBlock potted_paeonia = new FlowerPotBlock(paeonia, Block.Settings.of(Material.DECORATION).breakInstantly().nonOpaque());
-  public static RopeLadderBlock rope_ladder = new RopeLadderBlock(Block.Settings.of(Material.DECORATION).strength(0.4f).sounds(BlockSoundGroup.LADDER).nonOpaque());
+  public static RopeLadderBlock rope_ladder = new RopeLadderBlock(Block.Settings.of(Material.DECORATION).strength(0.1f, 0.2f).sounds(BlockSoundGroup.LADDER).nonOpaque());
 
   public static void register() {
     Registry.register(Registry.BLOCK, new Identifier(Main.ID, "stone_rock"), stone_rock);
