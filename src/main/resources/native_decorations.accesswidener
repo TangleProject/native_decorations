@@ -1,0 +1,9 @@
+accessWidener v1 named
+accessible method net/minecraft/block/Material$Builder lightPassesThrough ()Lnet/minecraft/block/Material$Builder;
+accessible method net/minecraft/block/Material$Builder destroyedByPiston ()Lnet/minecraft/block/Material$Builder;
+accessible method net/minecraft/block/Material$Builder burnable ()Lnet/minecraft/block/Material$Builder;
+accessible method net/minecraft/block/StairsBlock <init> (Lnet/minecraft/block/BlockState;Lnet/minecraft/block/AbstractBlock$Settings;)V
+accessible field net/minecraft/loot/LootTable$Builder pools Ljava/util/List;
+accessible field net/minecraft/loot/LootPool entries [Lnet/minecraft/loot/entry/LootPoolEntry;
+accessible field net/minecraft/loot/entry/ItemEntry item Lnet/minecraft/item/Item;
+mutable field net/minecraft/loot/entry/ItemEntry item Lnet/minecraft/item/Item;

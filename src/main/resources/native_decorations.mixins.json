@@ -4,9 +4,12 @@
   "package": "@package@.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "ShearsItemMixin",
   ],
   "client": [
-    "ExampleMixin"
+    "BlockColorsMixin",
+    "ItemColorsMixin",
+    "RenderLayersMixin"
   ],
   "injectors": {
     "defaultRequire": 1
