@@ -1,10 +1,4 @@
-/*
-* Decompiled with CFR 0.0.9 (FabricMC cc05e23f).
-*
-* Could not load the following classes:
-*  org.jetbrains.annotations.Nullable
-*/
-package net.minecraft.block;
+package sqaaakoi.minecraft_mods.native_decorations.blocks;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -29,7 +23,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 public class RopeLadderBlock extends LadderBlock implements Waterloggable {
   public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
