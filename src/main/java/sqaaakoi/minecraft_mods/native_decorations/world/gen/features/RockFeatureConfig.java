@@ -1,6 +1,5 @@
 package sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
-import sqaaakoi.minecraft_mods.native_decorations.tags.BlockTags;
 import com.mojang.serialization.Codec;
 import java.util.Random;
 import net.minecraft.world.gen.feature.FeatureConfig;
