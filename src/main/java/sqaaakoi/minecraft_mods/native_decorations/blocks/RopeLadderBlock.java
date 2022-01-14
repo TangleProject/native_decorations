@@ -77,7 +77,7 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
   private boolean canPlaceOn(BlockView world, BlockPos pos, Direction side) {
     BlockState b = world.getBlockState(pos);
     BlockState al = world.getBlockState(pos.offset(side).offset(Direction.UP));
-    return (b.isSideSolidFullSquare(world, pos, side) && !(b.getBlock() instanceof RopeLadderBlock)) || (al.getBlock() instanceof RopeLadderBlock && al.get(FACING).equals(side));
+    return ((b.isSideSolidFullSquare(world, pos, side) && !((b.getBlock() instanceof RopeLadderBlock) && b.get(FACING).getOpposite().equals(side))) || (al.getBlock() instanceof RopeLadderBlock && al.get(FACING).equals(side)));
   }
 
   @Override
@@ -91,10 +91,18 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
     if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
       return Blocks.AIR.getDefaultState();
     }
+    if (direction == Direction.UP && !state.canPlaceAt(world, pos)) {
+      return Blocks.AIR.getDefaultState();
+    }
+    if (direction == Direction.DOWN && !state.canPlaceAt(world, pos)) {
+      return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
     if (state.get(WATERLOGGED).booleanValue()) {
       world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
     }
-    return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    BlockState b = world.getBlockState(pos.offset(state.get(FACING).getOpposite()));
+    BlockState bl = world.getBlockState(pos.offset(Direction.DOWN));
+    return state.with(BOTTOM, (!(bl.getBlock() instanceof RopeLadderBlock)  && !b.isSideSolidFullSquare(world, pos, state.get(FACING))));
   }
 
   @Override
@@ -110,6 +118,9 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
     FluidState lv4 = ctx.getWorld().getFluidState(ctx.getBlockPos());
     for (Direction lv5 : ctx.getPlacementDirections()) {
       if (!lv5.getAxis().isHorizontal() || !(lv = (BlockState)lv.with(FACING, lv5.getOpposite())).canPlaceAt(lv2, lv3)) continue;
+      BlockState b = lv2.getBlockState(lv3.offset(lv.get(FACING).getOpposite()));
+      BlockState bl = lv2.getBlockState(lv3.offset(Direction.DOWN));
+      lv = lv.with(BOTTOM, (!(bl.getBlock() instanceof RopeLadderBlock)  && !b.isSideSolidFullSquare(lv2, lv3, lv.get(FACING))));
       return (BlockState)lv.with(WATERLOGGED, lv4.getFluid() == Fluids.WATER);
     }
     return null;

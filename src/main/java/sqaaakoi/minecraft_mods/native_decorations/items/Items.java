@@ -35,7 +35,7 @@ public class Items {
   public static Item crimson_stem_pile = new BlockItem(Blocks.crimson_stem_pile, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item warped_stem_pile = new BlockItem(Blocks.warped_stem_pile, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item paeonia = new BlockItem(Blocks.paeonia, new Item.Settings().group(ItemGroup.DECORATIONS));
-  public static Item rope_ladder = new BlockItem(Blocks.rope_ladder, new Item.Settings().group(ItemGroup.DECORATIONS));
+  public static Item rope_ladder = new RopeLadderItem(Blocks.rope_ladder, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item twig = new Item(new Item.Settings().group(ItemGroup.MISC));
 
   public static void register() {
