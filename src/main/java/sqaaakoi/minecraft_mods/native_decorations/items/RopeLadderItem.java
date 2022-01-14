@@ -36,12 +36,12 @@ public class RopeLadderItem extends BlockItem {
           if (w.getBlockState(p).getBlock().canReplace(w.getBlockState(p), new ItemPlacementContext(context))) {
             BlockState b = w.getBlockState(p.offset(bs.get(RopeLadderBlock.FACING).getOpposite()));
             BlockState bl = w.getBlockState(p.offset(Direction.DOWN));
+            context.getStack().decrement(1);
             w.setBlockState(p, bs.with(RopeLadderBlock.BOTTOM,  (!(bl.getBlock() instanceof RopeLadderBlock) && !b.isSideSolidFullSquare(w, p, bs.get(RopeLadderBlock. FACING)))), 2);
             w.playSound(pl, p, this.getPlaceSound(bs), SoundCategory.BLOCKS, (bs.getSoundGroup().getVolume() + 1.0f) / 2.0f, bs.getSoundGroup().getPitch() * 0.8f);
             w.emitGameEvent(pl, GameEvent.BLOCK_PLACE, p);
             pl.swingHand(context.getHand(), true);
             return ActionResult.success(w.isClient);
-
           } else {
             break;
           }
