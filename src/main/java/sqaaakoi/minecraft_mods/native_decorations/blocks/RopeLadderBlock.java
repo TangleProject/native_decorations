@@ -120,7 +120,7 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
       if (!lv5.getAxis().isHorizontal() || !(lv = (BlockState)lv.with(FACING, lv5.getOpposite())).canPlaceAt(lv2, lv3)) continue;
       BlockState b = lv2.getBlockState(lv3.offset(lv.get(FACING).getOpposite()));
       BlockState bl = lv2.getBlockState(lv3.offset(Direction.DOWN));
-      lv = lv.with(BOTTOM, (!(bl.getBlock() instanceof RopeLadderBlock)  && !b.isSideSolidFullSquare(lv2, lv3, lv.get(FACING))));
+      lv = lv.with(BOTTOM, (!(bl.getBlock() instanceof RopeLadderBlock) && !b.isSideSolidFullSquare(lv2, lv3, lv.get(FACING))));
       return (BlockState)lv.with(WATERLOGGED, lv4.getFluid() == Fluids.WATER);
     }
     return null;
