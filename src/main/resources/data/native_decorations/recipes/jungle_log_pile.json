@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "native_decorations:log_pile",
+  "pattern": [
+    " # ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_log"
+    }
+  },
+  "result": {
+    "item": "native_decorations:jungle_log_pile"
+  }
+}

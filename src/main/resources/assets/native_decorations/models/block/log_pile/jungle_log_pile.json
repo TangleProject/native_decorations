@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "minecraft:block/jungle_log",
+    "end": "native_decorations:block/log_pile/jungle_log_top"
+  },
+  "parent": "native_decorations:block/log_pile/log_pile"
+}

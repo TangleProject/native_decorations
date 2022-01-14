@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bushy=false": {
+      "model": "native_decorations:block/bush/jungle_bush"
+    },
+    "bushy=true": {
+      "model": "native_decorations:block/bush/bushy/jungle_bush"
+    }
+  }
+}

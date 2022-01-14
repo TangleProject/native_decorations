@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "native_decorations:block/rock/cobblestone_rock"
+    }
+  }
+}

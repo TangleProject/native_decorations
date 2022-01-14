@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "minecraft:block/crimson_stem",
+    "end": "native_decorations:block/log_pile/crimson_stem_top"
+  },
+  "parent": "native_decorations:block/log_pile/log_pile"
+}

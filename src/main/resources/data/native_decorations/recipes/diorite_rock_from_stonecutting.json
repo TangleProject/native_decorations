@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:diorite"
+    },
+    "result": "native_decorations:diorite_rock",
+    "count": 1
+}

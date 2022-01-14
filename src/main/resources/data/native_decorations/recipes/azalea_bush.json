@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:azalea_leaves"
+        }
+    ],
+    "result": {
+        "item": "native_decorations:azalea_bush",
+        "count": 1
+    }
+}

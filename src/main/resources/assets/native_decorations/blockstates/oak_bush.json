@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bushy=false": {
+      "model": "native_decorations:block/bush/oak_bush"
+    },
+    "bushy=true": {
+      "model": "native_decorations:block/bush/bushy/oak_bush"
+    }
+  }
+}

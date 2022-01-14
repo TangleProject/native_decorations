@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "minecraft:block/warped_stem",
+    "end": "native_decorations:block/log_pile/warped_stem_top"
+  },
+  "parent": "native_decorations:block/log_pile/log_pile"
+}

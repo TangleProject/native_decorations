@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "native_decorations:block/log_pile/acacia_log_pile",
+      "y": 90
+    },
+    "axis=z": {
+      "model": "native_decorations:block/log_pile/acacia_log_pile"
+    }
+  }
+}

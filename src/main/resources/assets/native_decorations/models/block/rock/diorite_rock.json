@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "rock": "minecraft:block/diorite"
+  },
+  "parent": "native_decorations:block/rock/rock"
+}

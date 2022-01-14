@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "rock": "minecraft:block/andesite"
+  },
+  "parent": "native_decorations:block/rock/rock"
+}

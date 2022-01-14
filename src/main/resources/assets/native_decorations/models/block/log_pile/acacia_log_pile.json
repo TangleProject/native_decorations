@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "minecraft:block/acacia_log",
+    "end": "native_decorations:block/log_pile/acacia_log_top"
+  },
+  "parent": "native_decorations:block/log_pile/log_pile"
+}

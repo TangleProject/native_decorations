@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "leaves": "minecraft:block/birch_leaves"
+  },
+  "parent": "native_decorations:block/bush/bushy/bushy"
+}

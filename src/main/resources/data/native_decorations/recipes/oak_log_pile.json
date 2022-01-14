@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "native_decorations:log_pile",
+  "pattern": [
+    " # ",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:oak_log"
+    }
+  },
+  "result": {
+    "item": "native_decorations:oak_log_pile"
+  }
+}

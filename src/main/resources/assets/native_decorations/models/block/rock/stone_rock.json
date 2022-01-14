@@ -1,0 +1,6 @@
+{
+  "textures": {
+    "rock": "minecraft:block/stone"
+  },
+  "parent": "native_decorations:block/rock/rock"
+}

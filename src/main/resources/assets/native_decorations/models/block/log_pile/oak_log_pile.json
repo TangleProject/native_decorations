@@ -1,0 +1,7 @@
+{
+  "textures": {
+    "side": "minecraft:block/oak_log",
+    "end": "native_decorations:block/log_pile/oak_log_top"
+  },
+  "parent": "native_decorations:block/log_pile/log_pile"
+}

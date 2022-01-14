@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bushy=false": {
+      "model": "native_decorations:block/bush/flowering_azalea_bush"
+    },
+    "bushy=true": {
+      "model": "native_decorations:block/bush/bushy/flowering_azalea_bush"
+    }
+  }
+}

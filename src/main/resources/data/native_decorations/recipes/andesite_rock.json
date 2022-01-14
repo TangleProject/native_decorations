@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:andesite"
+        }
+    ],
+    "result": {
+        "item": "native_decorations:andesite_rock",
+        "count": 1
+    }
+}

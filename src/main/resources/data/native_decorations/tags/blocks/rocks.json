@@ -1,0 +1,9 @@
+{
+  "values": [
+    "native_decorations:stone_rock",
+    "native_decorations:granite_rock",
+    "native_decorations:diorite_rock",
+    "native_decorations:andesite_rock",
+    "native_decorations:cobblestone_rock"
+  ]
+}

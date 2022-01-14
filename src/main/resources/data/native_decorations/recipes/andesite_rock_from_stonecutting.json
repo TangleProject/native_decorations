@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:andesite"
+    },
+    "result": "native_decorations:andesite_rock",
+    "count": 1
+}

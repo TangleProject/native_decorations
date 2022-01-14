@@ -1,0 +1,78 @@
+{
+  "textures": {
+    "particle": "#rock",
+    "rock": "minecraft:block/cobblestone"
+  },
+  "display": {
+    "gui": {
+      "rotation": [ 25, 45, 0 ],
+      "translation": [ 0, 1, 0 ],
+      "scale": [ 0.625, 0.625, 0.625 ]
+    },
+    "ground": {
+      "rotation": [ 0, 0, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 0.25, 0.25, 0.25 ]
+    },
+    "fixed": {
+      "rotation": [ 0, 180, 0 ],
+      "translation": [ 0, 0, 0 ],
+      "scale": [ 1, 1, 1 ]
+    },
+    "head": {
+      "rotation": [ 0, 180, 0 ],
+      "translation": [ 0, 3, 0 ],
+      "scale": [ 1.8, 1.8, 1.8 ]
+    },
+    "firstperson_righthand": {
+      "rotation": [ 0, 315, 0 ],
+      "translation": [ 0, 2.5, 0 ],
+      "scale": [ 0.4, 0.4, 0.4 ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [ 10, 315, 0 ],
+      "translation": [ 0, 1.7, 0 ],
+      "scale": [ 0.375, 0.375, 0.375 ]
+    }
+  },
+  "elements": [
+    {
+      "name": "rock_x",
+      "from": [ 2, 0, 4 ],
+      "to": [ 14, 6, 12 ],
+      "faces": {
+        "north": { "texture": "#rock", "uv": [ 2, 10, 14, 16 ] },
+        "east": { "texture": "#rock", "uv": [ 4, 10, 12, 16 ] },
+        "south": { "texture": "#rock", "uv": [ 2, 10, 14, 16 ] },
+        "west": { "texture": "#rock", "uv": [ 4, 10, 12, 16 ] },
+        "up": { "texture": "#rock", "uv": [ 2, 4, 14, 12 ] },
+        "down": { "texture": "#rock", "uv": [ 2, 4, 14, 12 ] }
+      }
+    },
+    {
+      "name": "rock_z",
+      "from": [ 4, 0, 2 ],
+      "to": [ 12, 6, 14 ],
+      "faces": {
+        "north": { "texture": "#rock", "uv": [ 4, 10, 12, 16 ] },
+        "east": { "texture": "#rock", "uv": [ 2, 10, 14, 16 ] },
+        "south": { "texture": "#rock", "uv": [ 4, 10, 12, 16 ] },
+        "west": { "texture": "#rock", "uv": [ 2, 10, 14, 16 ] },
+        "up": { "texture": "#rock", "uv": [ 4, 2, 12, 14 ] },
+        "down": { "texture": "#rock", "uv": [ 4, 2, 12, 14 ] }
+      }
+    },
+    {
+      "name": "rock_y",
+      "from": [ 4, 6, 4 ],
+      "to": [ 12, 8, 12 ],
+      "faces": {
+        "north": { "texture": "#rock", "uv": [ 4, 8, 12, 10 ] },
+        "east": { "texture": "#rock", "uv": [ 4, 8, 12, 10 ] },
+        "south": { "texture": "#rock", "uv": [ 4, 8, 12, 10 ] },
+        "west": { "texture": "#rock", "uv": [ 4, 8, 12, 10 ] },
+        "up": { "texture": "#rock", "uv": [ 4, 4, 12, 12 ] }
+      }
+    }
+  ]
+}
