@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,bottom=false": {
+      "model": "native_decorations:block/rope_ladder",
+      "y": 90
+    },
+    "facing=north,bottom=false": {
+      "model": "native_decorations:block/rope_ladder"
+    },
+    "facing=south,bottom=false": {
+      "model": "native_decorations:block/rope_ladder",
+      "y": 180
+    },
+    "facing=west,bottom=false": {
+      "model": "native_decorations:block/rope_ladder",
+      "y": 270
+    },
+    "facing=east,bottom=true": {
+      "model": "native_decorations:block/rope_ladder_bottom",
+      "y": 90
+    },
+    "facing=north,bottom=true": {
+      "model": "native_decorations:block/rope_ladder_bottom"
+    },
+    "facing=south,bottom=true": {
+      "model": "native_decorations:block/rope_ladder_bottom",
+      "y": 180
+    },
+    "facing=west,bottom=true": {
+      "model": "native_decorations:block/rope_ladder_bottom",
+      "y": 270
+    }
+  }
+}
