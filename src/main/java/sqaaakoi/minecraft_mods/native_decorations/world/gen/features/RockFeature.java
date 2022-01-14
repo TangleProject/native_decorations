@@ -12,17 +12,16 @@ import net.minecraft.world.ChunkSectionCache;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.chunk.ChunkSection;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-public class RockFeature extends Feature<DefaultFeatureConfig> {
-  public RockFeature(Codec<DefaultFeatureConfig> configCodec) {
+public class RockFeature extends Feature<RockFeatureConfig> {
+  public RockFeature(Codec<RockFeatureConfig> configCodec) {
     super(configCodec);
   }
 
   @Override
-  public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+  public boolean generate(FeatureContext<RockFeatureConfig> context) {
     Random rand = context.getRandom();
     StructureWorldAccess w = context.getWorld();
     BlockPos pos = w.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, context.getOrigin());
