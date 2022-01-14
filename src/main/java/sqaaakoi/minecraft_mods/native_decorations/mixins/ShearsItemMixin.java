@@ -48,7 +48,6 @@ public class ShearsItemMixin {
             Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)pl, pos, is);
         }
         BlockSoundGroup k = bs.getBlock().getSoundGroup(bs);
-        w.playSound(pl, pos, k.getBreakSound(), SoundCategory.BLOCKS, (k.getVolume() + 1.0f) / 2.0f, k.getPitch() * 0.8f);
         w.syncWorldEvent(pl, WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(bs));
         w.setBlockState(pos, bs.with(BushyBushBlock.BUSHY_BUSH, false));
         if (pl != null) {
