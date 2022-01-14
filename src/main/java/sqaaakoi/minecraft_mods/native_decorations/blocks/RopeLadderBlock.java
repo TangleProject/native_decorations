@@ -34,10 +34,10 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
   protected static final VoxelShape WEST_SHAPE = Block.createCuboidShape(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
   protected static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
   protected static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-  protected static final VoxelShape EAST_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 2.0, 0.0, 3.0, 16.0, 16.0);
-  protected static final VoxelShape WEST_SHAPE_BOTTOM = Block.createCuboidShape(13.0, 2.0, 0.0, 16.0, 16.0, 16.0);
-  protected static final VoxelShape SOUTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 2.0, 0.0, 16.0, 16.0, 3.0);
-  protected static final VoxelShape NORTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 2.0, 13.0, 16.0, 16.0, 16.0);
+  protected static final VoxelShape EAST_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 0.0, 3.0, 16.0, 16.0);
+  protected static final VoxelShape WEST_SHAPE_BOTTOM = Block.createCuboidShape(13.0, 1.0, 0.0, 16.0, 16.0, 16.0);
+  protected static final VoxelShape SOUTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 0.0, 16.0, 16.0, 3.0);
+  protected static final VoxelShape NORTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 13.0, 16.0, 16.0, 16.0);
 
   public RopeLadderBlock(AbstractBlock.Settings arg) {
     super(arg);
@@ -76,8 +76,8 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
 
   private boolean canPlaceOn(BlockView world, BlockPos pos, Direction side) {
     BlockState b = world.getBlockState(pos);
-    BlockState al = world.getBlockState(pos.offset(Direction.UP));
-    return b.isSideSolidFullSquare(world, pos, side) || (al.getBlock() instanceof RopeLadderBlock && al.get(FACING).equals(side));
+    BlockState al = world.getBlockState(pos.offset(side).offset(Direction.UP));
+    return (b.isSideSolidFullSquare(world, pos, side) && !(b.getBlock() instanceof RopeLadderBlock)) || (al.getBlock() instanceof RopeLadderBlock && al.get(FACING).equals(side));
   }
 
   @Override
