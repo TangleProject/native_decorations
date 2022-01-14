@@ -34,10 +34,10 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
   protected static final VoxelShape WEST_SHAPE = Block.createCuboidShape(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
   protected static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
   protected static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-  protected static final VoxelShape EAST_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 0.0, 3.0, 16.0, 16.0);
-  protected static final VoxelShape WEST_SHAPE_BOTTOM = Block.createCuboidShape(13.0, 1.0, 0.0, 16.0, 16.0, 16.0);
-  protected static final VoxelShape SOUTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 0.0, 16.0, 16.0, 3.0);
-  protected static final VoxelShape NORTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 1.0, 13.0, 16.0, 16.0, 16.0);
+  protected static final VoxelShape EAST_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 5.0, 0.0, 3.0, 16.0, 16.0);
+  protected static final VoxelShape WEST_SHAPE_BOTTOM = Block.createCuboidShape(13.0, 5.0, 0.0, 16.0, 16.0, 16.0);
+  protected static final VoxelShape SOUTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 5.0, 0.0, 16.0, 16.0, 3.0);
+  protected static final VoxelShape NORTH_SHAPE_BOTTOM = Block.createCuboidShape(0.0, 5.0, 13.0, 16.0, 16.0, 16.0);
 
   public RopeLadderBlock(AbstractBlock.Settings arg) {
     super(arg);
