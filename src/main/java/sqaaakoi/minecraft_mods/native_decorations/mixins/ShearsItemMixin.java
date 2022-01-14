@@ -63,7 +63,7 @@ public class ShearsItemMixin {
   @Inject(method = "getMiningSpeedMultiplier(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/BlockState;)F", at = @At("HEAD"), cancellable = true)
   public void getMiningSpeedMultiplier(ItemStack stack, BlockState state, CallbackInfoReturnable<ActionResult> cir) {
     if (state.isOf(Blocks.rope_ladder)) {
-      return 3.0f;
+      cir.setReturnValue(3.0f);
     }
   }
 
