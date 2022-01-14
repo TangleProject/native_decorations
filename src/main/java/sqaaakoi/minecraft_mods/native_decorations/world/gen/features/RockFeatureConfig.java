@@ -4,6 +4,7 @@ import sqaaakoi.minecraft_mods.native_decorations.tags.BlockTags;
 import com.mojang.serialization.Codec;
 import java.util.Random;
 import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
 public record RockFeatureConfig(IntProvider tries, BlockStateProvider block) implements FeatureConfig {
