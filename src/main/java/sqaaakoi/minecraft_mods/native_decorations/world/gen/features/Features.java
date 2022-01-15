@@ -33,7 +33,7 @@ public class Features {
 
   public static final PlacedFeature placed_cobblestone_rock = configured_cobblestone_rock.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(6));
   public static final RegistryKey<PlacedFeature> key_placed_cobblestone_rock = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "cobblestone_rock"));
-  public static final PlacedFeature placed_oak_log_pile = configured_oak_log_pile.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(6));
+  public static final PlacedFeature placed_oak_log_pile = configured_oak_log_pile.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(7));
   public static final RegistryKey<PlacedFeature> key_placed_oak_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "oak_log_pile"));
 
   public static void register() {
@@ -44,7 +44,7 @@ public class Features {
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_cobblestone_rock.getValue(), placed_cobblestone_rock);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_oak_log_pile.getValue(), placed_oak_log_pile);
     BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_cobblestone_rock);
-    BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_oak_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.TOP_LAYER_MODIFICATIONS, key_placed_oak_log_pile);
   }
 
 }

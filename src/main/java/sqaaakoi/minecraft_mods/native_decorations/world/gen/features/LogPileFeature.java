@@ -33,7 +33,7 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
     int len = rand.nextInt(maxLen - minLen) + minLen;
     int curLen = 0;
     while (curLen < len) {
-      if (isValid(pos, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w)) {
+      if (isValid(pos, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w) && isValid(pos.offset(logDir), w)) {
         logsPos.add(pos);
         pos = pos.offset(logDir);
         curLen++;
@@ -41,7 +41,7 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
         break;
       }
     }
-    if (curLen < minLen || !isValid(initPos.offset(logDir.getOpposite()), w) || !isValid(pos.offset(logDir), w)) {
+    if (curLen < minLen || !isValid(initPos.offset(logDir.getOpposite()), w)) {
       return false;
     }
     for (BlockPos lp : logsPos) {
