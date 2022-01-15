@@ -7,11 +7,11 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 
-public record RockFeatureConfig(IntProvider min_length, IntProvider max_length, BlockStateProvider block) implements FeatureConfig {
-  public static final Codec<RockFeatureConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
-    IntProvider.VALUE_CODEC.fieldOf("min_length").forGetter(RockFeatureConfig::min_length),
-    IntProvider.VALUE_CODEC.fieldOf("max_length").forGetter(RockFeatureConfig::max_length),
-    BlockStateProvider.TYPE_CODEC.fieldOf("block_x").forGetter(RockFeatureConfig::block_x),
-    BlockStateProvider.TYPE_CODEC.fieldOf("block_z").forGetter(RockFeatureConfig::block_z)
-  ).apply(i, i.stable(RockFeatureConfig::new)));
+public record LogPileFeatureConfig(IntProvider min_length, IntProvider max_length, BlockStateProvider block_x, BlockStateProvider block_z) implements FeatureConfig {
+  public static final Codec<LogPileFeatureConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
+    IntProvider.VALUE_CODEC.fieldOf("min_length").forGetter(LogPileFeatureConfig::min_length),
+    IntProvider.VALUE_CODEC.fieldOf("max_length").forGetter(LogPileFeatureConfig::max_length),
+    BlockStateProvider.TYPE_CODEC.fieldOf("block_x").forGetter(LogPileFeatureConfig::block_x),
+    BlockStateProvider.TYPE_CODEC.fieldOf("block_z").forGetter(LogPileFeatureConfig::block_z)
+  ).apply(i, i.stable(LogPileFeatureConfig::new)));
 }

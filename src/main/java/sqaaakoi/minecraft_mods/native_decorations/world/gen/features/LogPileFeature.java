@@ -26,14 +26,14 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
     StructureWorldAccess w = context.getWorld();
     BlockPos pos = w.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, context.getOrigin());
     BlockPos initPos = pos;
-    Direction logDir = Direction.HORIZONTAL[rand.nextInt(Direction.HORIZONTAL.length)];
+    Direction logDir = Direction.fromHorizontal(rand.nextInt(4));
     ArrayList<BlockPos> logsPos = new ArrayList<>();
     int minLen = context.getConfig().min_length().get(rand);
     int maxLen = context.getConfig().max_length().get(rand);
     int len = rand.nextInt(maxLen - minLen) + minLen;
     int curLen = 0;
     while (curLen < len) {
-      if (isValid(p, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w)) {
+      if (isValid(pos, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w)) {
         logsPos.add(pos);
         pos = pos.offset(logDir);
         curLen++;
@@ -41,11 +41,11 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
         break;
       }
     }
-    if (curLen < minLen || !isValid(initPos.offset(logDir.getOpposite())) || !isValid(pos.offset(logDir))) {
+    if (curLen < minLen || !isValid(initPos.offset(logDir.getOpposite()), w) || !isValid(pos.offset(logDir), w)) {
       return false;
     }
     for (BlockPos lp : logsPos) {
-      BlockState lbs = logDir.getAxis() == Direction.Axis.X ? context.getConfig().block_x() : context.getConfig().block_z();
+      BlockState lbs = (logDir.getAxis() == Direction.Axis.X ? context.getConfig().block_x() : context.getConfig().block_z()).getBlockState(rand, lp);
       w.setBlockState(lp, lbs, 3);
       w.setBlockState(lp.offset(Direction.DOWN), Blocks.DIRT.getDefaultState(), 3);
     }
@@ -53,6 +53,6 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
   }
 
   private boolean isValid(BlockPos p, StructureWorldAccess w) {
-    return w.getBlockState(p).isAir() && w.getBlockState(pos.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
+    return w.getBlockState(p).isAir() && w.getBlockState(p.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
   }
 }
