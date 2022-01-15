@@ -8,6 +8,7 @@ import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.LadderBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -15,15 +16,17 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.event.GameEvent;
 import javax.annotation.Nullable;
 
 public class RopeLadderBlock extends LadderBlock implements Waterloggable {
@@ -130,4 +133,38 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
     builder.add(FACING, WATERLOGGED, BOTTOM);
   }
+
+  private boolean isBlockMatchingRopeLadder(BlockState bs, World w, BlockPos p) {
+    if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock) {
+      if (w.getBlockState(p).get(RopeLadderBlock.FACING).equals(bs.get(RopeLadderBlock.FACING))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  public ActionResult onUse(BlockState bs, World w, BlockPos p_, PlayerEntity pl, Hand h, BlockHitResult bhr) {
+    BlockPos p = p_;
+    if (pl.shouldCancelInteraction() && !isBlockMatchingRopeLadder(bs, w, p.offset(Direction.UP))) {
+      p = p.offset(Direction.DOWN);
+      while (w.isInBuildLimit(p)) {
+        if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock && w.getBlockState(p).get(RopeLadderBlock.FACING).equals(bs.get(RopeLadderBlock.FACING))) {
+          p = p.offset(Direction.DOWN);
+        } else {
+          p = p.offset(Direction.UP);
+          if (p.equals(p_)) {
+            return ActionResult.FAIL;
+          }
+            // context.getStack().decrement(1);
+            w.setBlockState(p, w.getFluidState(p).getBlockState(), 3);
+            w.emitGameEvent(pl, GameEvent.BLOCK_DESTROY, p);
+            return ActionResult.success(w.isClient);
+        }
+      }
+      return ActionResult.FAIL;
+    }
+    return super.onUse(bs, w, p, pl, h, bhr);
+  }
+
 }
