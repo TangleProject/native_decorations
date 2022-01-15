@@ -40,7 +40,7 @@ public class RopeLadderItem extends BlockItem {
             BlockState bl = w.getBlockState(p.offset(Direction.DOWN));
             FluidState fs = w.getFluidState(p);
             context.getStack().decrement(1);
-            w.setBlockState(p, bs.with(RopeLadderBlock.WATERLOGGED, fs.getFluid() == Fluids.WATER).with(RopeLadderBlock.BOTTOM,  (!(bl.getBlock() instanceof RopeLadderBlock) && !b.isSideSolidFullSquare(w, p, bs.get(RopeLadderBlock. FACING)))), 2);
+            w.setBlockState(p, bs.with(RopeLadderBlock.WATERLOGGED, fs.getFluid() == Fluids.WATER).with(RopeLadderBlock.BOTTOM,  (!(bl.getBlock() instanceof RopeLadderBlock) && !b.isSideSolidFullSquare(w, p, bs.get(RopeLadderBlock. FACING)))), 3);
             w.playSound(pl, p, this.getPlaceSound(bs), SoundCategory.BLOCKS, (bs.getSoundGroup().getVolume() + 1.0f) / 2.0f, bs.getSoundGroup().getPitch() * 0.8f);
             w.emitGameEvent(pl, GameEvent.BLOCK_PLACE, p);
             pl.swingHand(context.getHand(), true);
