@@ -1,6 +1,7 @@
 package sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Random;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -10,5 +11,5 @@ public record RockFeatureConfig(IntProvider tries, BlockStateProvider block) imp
   public static final Codec<RockFeatureConfig> CODEC = RecordCodecBuilder.create(i -> i.group(
     IntProvider.VALUE_CODEC.fieldOf("tries").forGetter(RockFeatureConfig::tries),
     BlockStateProvider.TYPE_CODEC.fieldOf("block").forGetter(RockFeatureConfig::block)
-  ).apply(i, instance.stable(RockFeatureConfig::new)));
+  ).apply(i, i.stable(RockFeatureConfig::new)));
 }
