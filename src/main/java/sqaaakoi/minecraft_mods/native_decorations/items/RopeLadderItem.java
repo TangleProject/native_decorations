@@ -33,7 +33,11 @@ public class RopeLadderItem extends BlockItem {
       p = p.offset(Direction.DOWN);
       while (w.isInBuildLimit(p)) {
         if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock) {
-          p = p.offset(Direction.DOWN);
+          if (w.getBlockState(p).get(RopeLadderBlock.FACING).equals(bs.get(RopeLadderBlock.FACING))) {
+            p = p.offset(Direction.DOWN);
+          } else {
+            break;
+          }
         } else {
           if (w.getBlockState(p).getBlock().canReplace(w.getBlockState(p), new ItemPlacementContext(context))) {
             BlockState b = w.getBlockState(p.offset(bs.get(RopeLadderBlock.FACING).getOpposite()));
