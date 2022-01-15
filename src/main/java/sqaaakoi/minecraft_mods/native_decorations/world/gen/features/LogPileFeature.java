@@ -53,6 +53,6 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
   }
 
   private boolean isValid(BlockPos p, StructureWorldAccess w) {
-    return w.getBlockState(p).isAir() && w.getBlockState(p.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
+    return (w.getBlockState(p).isAir() || w.getBlockState(p) == Blocks.GRASS.getDefaultState()) && w.getBlockState(p.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
   }
 }
