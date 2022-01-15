@@ -27,7 +27,7 @@ public class RockFeature extends Feature<RockFeatureConfig> {
     BlockPos pos = w.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, context.getOrigin());
     for (int i = 0; i < context.getConfig().tries().get(rand); i++) {
       BlockPos lbp = pos.add(rand.nextInt(10) - rand.nextInt(10), rand.nextInt(3) - rand.nextInt(3), rand.nextInt(10) - rand.nextInt(10));
-      if (w.getBlockState(pos).isAir() && w.getBlockState(pos.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState()) {
+      if (w.getBlockState(lbp).isAir() && w.getBlockState(lbp.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState()) {
         BlockState bs = context.getConfig().block().getBlockState(rand, lbp);
         w.setBlockState(lbp, bs, 3);
       }
