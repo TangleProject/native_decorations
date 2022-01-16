@@ -82,27 +82,27 @@ public class Features {
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_oak_log_pile.getValue(), placed_oak_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_oak_log_pile.getValue(), configured_oak_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(OAK_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_oak_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_oak_log_pile);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_birch_log_pile.getValue(), placed_birch_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_birch_log_pile.getValue(), configured_birch_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(BIRCH_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_birch_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(BIRCH_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_birch_log_pile);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_spruce_log_pile.getValue(), placed_spruce_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_spruce_log_pile.getValue(), configured_spruce_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(SPRUCE_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_spruce_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(SPRUCE_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_spruce_log_pile);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_jungle_log_pile.getValue(), placed_jungle_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_jungle_log_pile.getValue(), configured_jungle_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(JUNGLE_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_jungle_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(JUNGLE_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_jungle_log_pile);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_acacia_log_pile.getValue(), placed_acacia_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_acacia_log_pile.getValue(), configured_acacia_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ACACIA_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_acacia_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(ACACIA_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_acacia_log_pile);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_dark_oak_log_pile.getValue(), placed_dark_oak_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_dark_oak_log_pile.getValue(), configured_dark_oak_log_pile);
-    BiomeModifications.addFeature(BiomeSelectors.includeByKey(DARK_OAK_BIOMES), GenerationStep.Feature.TOP_LAYER_MODIFICATION, key_placed_dark_oak_log_pile);
+    BiomeModifications.addFeature(BiomeSelectors.includeByKey(DARK_OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_dark_oak_log_pile);
 
   }
 

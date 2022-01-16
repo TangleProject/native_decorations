@@ -24,7 +24,11 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
   public boolean generate(FeatureContext<LogPileFeatureConfig> context) {
     Random rand = context.getRandom();
     StructureWorldAccess w = context.getWorld();
-    BlockPos pos = w.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, context.getOrigin());
+    BlockPos pos = w.getTopPosition(Heightmap.Type.OCEAN_FLOOR_WG, context.getOrigin().add(rand.nextInt(16), 0, rand.nextInt(16)));
+    int ofd = 3;
+    while (w.getBlockState(pos.offset(Direction.DOWN)).getMaterial().isReplaceable() && ofd > 0) {
+      pos = pos.offset(Direction.DOWN);
+    }
     BlockPos initPos = pos;
     Direction logDir = Direction.fromHorizontal(rand.nextInt(4));
     ArrayList<BlockPos> logsPos = new ArrayList<>();
