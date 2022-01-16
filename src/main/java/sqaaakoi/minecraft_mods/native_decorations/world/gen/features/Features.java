@@ -2,6 +2,7 @@ package sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
 import sqaaakoi.minecraft_mods.native_decorations.Main;
 import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
+import sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
 import sqaaakoi.minecraft_mods.native_decorations.blocks.LogPileBlock;
 import java.util.Arrays;
 import java.util.Collection;
@@ -66,32 +67,32 @@ public class Features {
   public static final PlacedFeature placed_dark_oak_log_pile = configured_dark_oak_log_pile.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_dark_oak_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_log_pile"));
 
-  public static final ConfiguredFeature<?, ?> configured_oak_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_oak_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_oak_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "oak_bush"));
   public static final PlacedFeature placed_oak_bush = configured_oak_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_oak_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "oak_bush"));
 
-  public static final ConfiguredFeature<?, ?> configured_birch_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.birch_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.birch_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_birch_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.birch_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.birch_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_birch_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "birch_bush"));
   public static final PlacedFeature placed_birch_bush = configured_birch_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_birch_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "birch_bush"));
 
-  public static final ConfiguredFeature<?, ?> configured_spruce_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.spruce_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.spruce_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_spruce_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.spruce_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.spruce_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_spruce_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "spruce_bush"));
   public static final PlacedFeature placed_spruce_bush = configured_spruce_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_spruce_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "spruce_bush"));
 
-  public static final ConfiguredFeature<?, ?> configured_jungle_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.jungle_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.jungle_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_jungle_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.jungle_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.jungle_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_jungle_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "jungle_bush"));
   public static final PlacedFeature placed_jungle_bush = configured_jungle_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_jungle_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "jungle_bush"));
 
-  public static final ConfiguredFeature<?, ?> configured_acacia_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.acacia_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.acacia_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_acacia_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.acacia_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.acacia_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_acacia_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "acacia_bush"));
   public static final PlacedFeature placed_acacia_bush = configured_acacia_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_acacia_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "acacia_bush"));
 
-  public static final ConfiguredFeature<?, ?> configured_dark_oak_bush = feature_bush.configure(new LogPileFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.dark_oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.dark_oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
+  public static final ConfiguredFeature<?, ?> configured_dark_oak_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.dark_oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.dark_oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_dark_oak_bush = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_bush"));
   public static final PlacedFeature placed_dark_oak_bush = configured_dark_oak_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_dark_oak_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_bush"));
