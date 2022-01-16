@@ -96,12 +96,12 @@ public class Features {
   public static final PlacedFeature placed_dark_oak_bush = configured_dark_oak_bush.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_dark_oak_bush = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_bush"));
 
-  Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.SWAMP);
-  Collection<RegistryKey<Biome>> BIRCH_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST);
-  Collection<RegistryKey<Biome>> SPRUCE_BIOMES = Arrays.asList(BiomeKeys.TAIGA, BiomeKeys.SNOWY_TAIGA, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
-  Collection<RegistryKey<Biome>> JUNGLE_BIOMES = Arrays.asList(BiomeKeys.JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SPARSE_JUNGLE);
-  Collection<RegistryKey<Biome>> ACACIA_BIOMES = Arrays.asList(BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA);
-  Collection<RegistryKey<Biome>> DARK_OAK_BIOMES = Arrays.asList(BiomeKeys.DARK_FOREST);
+  public static Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.SWAMP);
+  public static Collection<RegistryKey<Biome>> BIRCH_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST);
+  public static Collection<RegistryKey<Biome>> SPRUCE_BIOMES = Arrays.asList(BiomeKeys.TAIGA, BiomeKeys.SNOWY_TAIGA, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
+  public static Collection<RegistryKey<Biome>> JUNGLE_BIOMES = Arrays.asList(BiomeKeys.JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SPARSE_JUNGLE);
+  public static Collection<RegistryKey<Biome>> ACACIA_BIOMES = Arrays.asList(BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA);
+  public static Collection<RegistryKey<Biome>> DARK_OAK_BIOMES = Arrays.asList(BiomeKeys.DARK_FOREST);
 
   public static void register() {
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "rock"), feature_rock);
