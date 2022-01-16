@@ -65,6 +65,13 @@ public class Features {
   public static final PlacedFeature placed_dark_oak_log_pile = configured_dark_oak_log_pile.withPlacement(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
   public static final RegistryKey<PlacedFeature> key_placed_dark_oak_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_log_pile"));
 
+  Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.SWAMP);
+  Collection<RegistryKey<Biome>> BIRCH_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST);
+  Collection<RegistryKey<Biome>> SPRUCE_BIOMES = Arrays.asList(BiomeKeys.TAIGA, BiomeKeys.SNOWY_TAIGA, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
+  Collection<RegistryKey<Biome>> JUNGLE_BIOMES = Arrays.asList(BiomeKeys.JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SPARSE_JUNGLE);
+  Collection<RegistryKey<Biome>> ACACIA_BIOMES = Arrays.asList(BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA);
+  Collection<RegistryKey<Biome>> DARK_OAK_BIOMES = Arrays.asList(BiomeKeys.DARK_FOREST);
+
   public static void register() {
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "rock"), feature_rock);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "log_pile"), feature_log_pile);
@@ -72,13 +79,6 @@ public class Features {
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_cobblestone_rock.getValue(), configured_cobblestone_rock);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_cobblestone_rock.getValue(), placed_cobblestone_rock);
     BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_cobblestone_rock);
-
-    Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST);
-    Collection<RegistryKey<Biome>> BIRCH_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST);
-    Collection<RegistryKey<Biome>> SPRUCE_BIOMES = Arrays.asList(BiomeKeys.TAIGA, BiomeKeys.SNOWY_TAIGA, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
-    Collection<RegistryKey<Biome>> JUNGLE_BIOMES = Arrays.asList(BiomeKeys.JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SPARSE_JUNGLE);
-    Collection<RegistryKey<Biome>> ACACIA_BIOMES = Arrays.asList(BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_SAVANNA);
-    Collection<RegistryKey<Biome>> DARK_OAK_BIOMES = Arrays.asList(BiomeKeys.DARK_FOREST);
 
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_oak_log_pile.getValue(), placed_oak_log_pile);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_oak_log_pile.getValue(), configured_oak_log_pile);
