@@ -137,10 +137,6 @@ public class Features {
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_dark_oak_log_pile.getValue(), configured_dark_oak_log_pile);
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(DARK_OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_dark_oak_log_pile);
 
-    Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_cobblestone_rock.getValue(), configured_cobblestone_rock);
-    Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_cobblestone_rock.getValue(), placed_cobblestone_rock);
-    BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_cobblestone_rock);
-
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_oak_bush.getValue(), placed_oak_bush);
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_oak_bush.getValue(), configured_oak_bush);
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_oak_bush);
