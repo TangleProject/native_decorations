@@ -39,7 +39,7 @@ public class RopeLadderItem extends BlockItem {
             break;
           }
         } else {
-          if (w.getBlockState(p).getBlock().canReplace(w.getBlockState(p), new ItemPlacementContext(context))) {
+          if (w.getBlockState(p).getMaterial().isReplaceable()) {
             BlockState b = w.getBlockState(p.offset(bs.get(RopeLadderBlock.FACING).getOpposite()));
             BlockState bl = w.getBlockState(p.offset(Direction.DOWN));
             FluidState fs = w.getFluidState(p);

@@ -33,7 +33,7 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
     int len = rand.nextInt(maxLen - minLen) + minLen;
     int curLen = 0;
     while (curLen < len) {
-      if (isValid(pos, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w) && isValid(pos.offset(logDir), w)) {
+      if (isValidStrict(pos, w) && isValid(pos.offset(logDir.rotateYClockwise()), w) && isValid(pos.offset(logDir.rotateYCounterclockwise()), w) && isValid(pos.offset(logDir), w)) {
         logsPos.add(pos);
         pos = pos.offset(logDir);
         curLen++;
@@ -53,6 +53,10 @@ public class LogPileFeature extends Feature<LogPileFeatureConfig> {
   }
 
   private boolean isValid(BlockPos p, StructureWorldAccess w) {
-    return (w.getBlockState(p).isAir() || w.getBlockState(p) == Blocks.GRASS.getDefaultState()) && w.getBlockState(p.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
+    return (w.getBlockState(p).isAir() || w.getBlockState(p).getMaterial().isReplaceable()) && w.getBlockState(p.offset(Direction.DOWN)) == Blocks.GRASS_BLOCK.getDefaultState();
+  }
+
+  private boolean isValidStrict(BlockPos p, StructureWorldAccess w) {
+    return w.getBlockState(p.offset(Direction.UP)).isAir() && isValid(p, w);
   }
 }
