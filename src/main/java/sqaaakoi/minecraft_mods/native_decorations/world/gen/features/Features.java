@@ -41,7 +41,7 @@ public class Features {
   private static final Feature<BushFeatureConfig> feature_bush = new BushFeature(BushFeatureConfig.CODEC);
   private static final Feature<LogPileFeatureConfig> feature_log_pile = new LogPileFeature(LogPileFeatureConfig.CODEC);
 
-  public static final ConfiguredFeature<?, ?> configured_trees_oak = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_BEES_0002, 0.1f)), TreePlacedFeatures.OAK_BEES_0002));
+  public static final ConfiguredFeature<?, ?> configured_trees_oak = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_BEES_0002, 0.1f)), TreePlacedFeatures.OAK_BEES_0002)));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_trees_oak = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
   public static final PlacedFeature placed_trees_oak = configured_trees_oak.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING));
   public static final RegistryKey<PlacedFeature> key_placed_trees_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
