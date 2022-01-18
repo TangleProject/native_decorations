@@ -62,7 +62,7 @@ public class Features {
 
   public static final ConfiguredFeature<?, ?> configured_trees_big_oak = feature_big_oak_tree.configure(DefaultFeatureConfig.INSTANCE);
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_trees_big_oak = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
-  public static final PlacedFeature placed_trees_big_oak = configured_trees_big_oak.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
+  public static final PlacedFeature placed_trees_big_oak = configured_trees_big_oak.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(6, 0.1f, 1)));
   public static final RegistryKey<PlacedFeature> key_placed_trees_big_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
 
   public static final ConfiguredFeature<?, ?> configured_cobblestone_rock = feature_rock.configure(new RockFeatureConfig(ConstantIntProvider.create(40), new SimpleBlockStateProvider(Blocks.cobblestone_rock.getDefaultState())));
