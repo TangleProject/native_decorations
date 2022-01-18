@@ -63,7 +63,7 @@ public class Biomes {
     DefaultBiomeFeatures.addForestGrass(gens);
     //  Custom trees (oak only)
     gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, Features.placed_trees_big_oak);
-    return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).temperature(0.7f).downfall(0.8f).effects(new BiomeEffects.Builder().grassColor(0x56d24f).foliageColor(0x14b011).waterColor(0x38a5db).waterFogColor(0x  032436).fogColor(0xc0d8ff).skyColor(OverworldBiomeCreator.getSkyColor(0.7f)).moodSound(BiomeMoodSound.CAVE).music(null).build()).spawnSettings(sps.build()).generationSettings(gens.build()).build();
+    return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).temperature(0.7f).downfall(0.8f).effects(new BiomeEffects.Builder().grassColor(0x56d24f).foliageColor(0x14b011).waterColor(0x38a5db).waterFogColor(0x032436).fogColor(0xc0d8ff).skyColor(OverworldBiomeCreator.getSkyColor(0.7f)).moodSound(BiomeMoodSound.CAVE).music(null).build()).spawnSettings(sps.build()).generationSettings(gens.build()).build();
   }
 
   public static void register() {
