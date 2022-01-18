@@ -29,9 +29,9 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import net.minecraft.world.gen.feature.TreePlacedFeatures;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
 import net.minecraft.world.gen.decorator.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.decorator.HeightmapPlacementModifier;
@@ -52,7 +52,7 @@ public class Features {
 
   private static final Feature<RockFeatureConfig> feature_rock = new RockFeature(RockFeatureConfig.CODEC);
   private static final Feature<BushFeatureConfig> feature_bush = new BushFeature(BushFeatureConfig.CODEC);
-  private static final Feature<RockFeatureConfig> feature_clone = new CloneFeature(CloneFeatureConfig.CODEC);
+  private static final Feature<DefaultFeatureConfig> feature_big_oak_tree = new BigOakTreeFeature(DefaultFeatureConfig.CODEC);
   private static final Feature<LogPileFeatureConfig> feature_log_pile = new LogPileFeature(LogPileFeatureConfig.CODEC);
 
   public static final ConfiguredFeature<?, ?> configured_trees_oak = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_BEES_0002, 0.1f)), TreePlacedFeatures.OAK_BEES_0002));
@@ -60,9 +60,9 @@ public class Features {
   public static final PlacedFeature placed_trees_oak = configured_trees_oak.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
   public static final RegistryKey<PlacedFeature> key_placed_trees_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
 
-  public static final ConfiguredFeature<?, ?> configured_trees_big_oak = feature_clone.configure(new CloneFeatureConfig(TreePlacedFeatures.OAK_BEES_0002));
+  public static final ConfiguredFeature<?, ?> configured_trees_big_oak = feature_big_oak_tree.configure(DefaultFeatureConfig.INSTANCE);
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_trees_big_oak = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
-  public static final PlacedFeature placed_trees_big_oak = configured_trees_big_oak.withPlacement(appendListOfPlacementModifiers(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)), BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(net.minecraft.block.Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
+  public static final PlacedFeature placed_trees_big_oak = configured_trees_big_oak.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
   public static final RegistryKey<PlacedFeature> key_placed_trees_big_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
 
   public static final ConfiguredFeature<?, ?> configured_cobblestone_rock = feature_rock.configure(new RockFeatureConfig(ConstantIntProvider.create(40), new SimpleBlockStateProvider(Blocks.cobblestone_rock.getDefaultState())));
@@ -133,12 +133,13 @@ public class Features {
   public static void register() {
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "rock"), feature_rock);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "bush"), feature_bush);
-    Registry.register(Registry.FEATURE, new Identifier(Main.ID, "clone"), feature_clone);
+    Registry.register(Registry.FEATURE, new Identifier(Main.ID, "big_oak_tree"), feature_big_oak_tree);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "log_pile"), feature_log_pile);
 
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_trees_oak.getValue(), configured_trees_oak);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_trees_oak.getValue(), placed_trees_oak);
 
+    Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_trees_big_oak.getValue(), configured_trees_big_oak);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_trees_big_oak.getValue(), placed_trees_big_oak);
 
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_cobblestone_rock.getValue(), configured_cobblestone_rock);
@@ -193,17 +194,6 @@ public class Features {
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_dark_oak_bush.getValue(), configured_dark_oak_bush);
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(DARK_OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_dark_oak_bush);
 
-  }
-
-  private static List<PlacementModifier> appendListOfPlacementModifiers(List<PlacementModifier> npml, PlacementModifier... epml) {
-    List<PlacementModifier> l = new ArrayList<PlacementModifier>();
-    for (PlacementModifier ep : epml) {
-      l.add(ep);
-    }
-    for (PlacementModifier np : npml) {
-      l.add(np);
-    }
-    return l;
   }
 
 }
