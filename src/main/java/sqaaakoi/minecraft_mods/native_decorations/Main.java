@@ -4,6 +4,7 @@ import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
 import sqaaakoi.minecraft_mods.native_decorations.items.Items;
 import sqaaakoi.minecraft_mods.native_decorations.loot.LootTablePatcher;
 import sqaaakoi.minecraft_mods.native_decorations.world.gen.features.Features;
+import sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,5 +20,6 @@ public class Main implements ModInitializer {
     Items.register();
     LootTablePatcher.patch();
     Features.register();
+    Biomes.register();
   }
 }
