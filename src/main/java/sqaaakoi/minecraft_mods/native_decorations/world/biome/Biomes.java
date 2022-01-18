@@ -19,10 +19,13 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class Biomes {
 
-  public static final Biome biome_oak_forest = create_oak_forest();
+  public static final Biome biome_oak_forest = create_oak_forest(false);
   public static final RegistryKey<Biome> key_biome_oak_forest = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.ID, "oak_forest"));
 
-  public static Biome create_oak_forest() {
+  public static final Biome biome_big_oak_forest = create_oak_forest(true);
+  public static final RegistryKey<Biome> key_biome_big_oak_forest = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.ID, "big_oak_forest"));
+
+  public static Biome create_oak_forest(boolean big) {
     SpawnSettings.Builder sps = new SpawnSettings.Builder();
     DefaultBiomeFeatures.addFarmAnimals(sps);
     DefaultBiomeFeatures.addBatsAndMonsters(sps);
@@ -37,13 +40,14 @@ public class Biomes {
     DefaultBiomeFeatures.addDefaultFlowers(gens);
     DefaultBiomeFeatures.addForestGrass(gens);
 
-    //  Custom trees (oak on)
-    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, Features.placed_trees_oak);
+    //  Custom trees (oak only)
+    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, big ? Features.placed_trees_big_oak : Features.placed_trees_oak);
     return OverworldBiomeCreator.createBiome(Biome.Precipitation.RAIN, Biome.Category.FOREST, 0.7f, 0.8f, sps, gens, null);
   }
 
   public static void register() {
     Registry.register(BuiltinRegistries.BIOME, key_biome_oak_forest.getValue(), biome_oak_forest);
+    Registry.register(BuiltinRegistries.BIOME, key_biome_big_oak_forest.getValue(), biome_big_oak_forest);
   }
 
 }
