@@ -19,7 +19,7 @@ public class Main implements ModInitializer {
     Blocks.register();
     Items.register();
     LootTablePatcher.patch();
-    Features.register();
     Biomes.register();
+    Features.register();
   }
 }

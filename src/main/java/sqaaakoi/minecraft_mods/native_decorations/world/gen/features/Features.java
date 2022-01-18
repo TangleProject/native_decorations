@@ -4,7 +4,9 @@ import sqaaakoi.minecraft_mods.native_decorations.Main;
 import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
 import sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
 import sqaaakoi.minecraft_mods.native_decorations.blocks.LogPileBlock;
+import sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -13,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.Heightmap;
@@ -26,19 +29,21 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import net.minecraft.world.gen.feature.TreePlacedFeatures;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
 import net.minecraft.world.gen.decorator.BiomePlacementModifier;
 import net.minecraft.world.gen.decorator.BlockFilterPlacementModifier;
 import net.minecraft.world.gen.decorator.HeightmapPlacementModifier;
 import net.minecraft.world.gen.decorator.SquarePlacementModifier;
+import net.minecraft.world.gen.decorator.PlacementModifier;
 import net.minecraft.world.gen.decorator.PlacementModifierType;
 import net.minecraft.world.gen.decorator.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 
 public class Features {
 
-  public static Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.SWAMP);
+  public static Collection<RegistryKey<Biome>> OAK_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SAVANNA, BiomeKeys.SAVANNA_PLATEAU, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.SWAMP, Biomes.key_biome_oak_forest, Biomes.key_biome_big_oak_forest);
   public static Collection<RegistryKey<Biome>> BIRCH_BIOMES = Arrays.asList(BiomeKeys.FOREST, BiomeKeys.FLOWER_FOREST, BiomeKeys.DARK_FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST);
   public static Collection<RegistryKey<Biome>> SPRUCE_BIOMES = Arrays.asList(BiomeKeys.TAIGA, BiomeKeys.SNOWY_TAIGA, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.OLD_GROWTH_PINE_TAIGA, BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA);
   public static Collection<RegistryKey<Biome>> JUNGLE_BIOMES = Arrays.asList(BiomeKeys.JUNGLE, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.SPARSE_JUNGLE);
@@ -47,6 +52,7 @@ public class Features {
 
   private static final Feature<RockFeatureConfig> feature_rock = new RockFeature(RockFeatureConfig.CODEC);
   private static final Feature<BushFeatureConfig> feature_bush = new BushFeature(BushFeatureConfig.CODEC);
+  private static final Feature<RockFeatureConfig> feature_clone = new CloneFeature(CloneFeatureConfig.CODEC);
   private static final Feature<LogPileFeatureConfig> feature_log_pile = new LogPileFeature(LogPileFeatureConfig.CODEC);
 
   public static final ConfiguredFeature<?, ?> configured_trees_oak = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_BEES_0002, 0.1f)), TreePlacedFeatures.OAK_BEES_0002));
@@ -54,10 +60,10 @@ public class Features {
   public static final PlacedFeature placed_trees_oak = configured_trees_oak.withPlacement(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
   public static final RegistryKey<PlacedFeature> key_placed_trees_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
 
-  public static final ConfiguredFeature<?, ?> configured_trees_big_oak = TreePlacedFeatures.FANCY_OAK_BEES_0002;
+  public static final ConfiguredFeature<?, ?> configured_trees_big_oak = feature_clone.configure(new CloneFeatureConfig(TreePlacedFeatures.OAK_BEES_0002));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_trees_big_oak = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
-  public static final PlacedFeature placed_trees_oak = configured_trees_oak.withPlacement(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(net.minecraft.block.Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN)), VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)));
-  public static final RegistryKey<PlacedFeature> key_placed_trees_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
+  public static final PlacedFeature placed_trees_big_oak = configured_trees_big_oak.withPlacement(appendListOfPlacementModifiers(VegetationPlacedFeatures.modifiers(PlacedFeatures.createCountExtraModifier(10, 0.1f, 1)), BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(net.minecraft.block.Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN))));
+  public static final RegistryKey<PlacedFeature> key_placed_trees_big_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_big_oak"));
 
   public static final ConfiguredFeature<?, ?> configured_cobblestone_rock = feature_rock.configure(new RockFeatureConfig(ConstantIntProvider.create(40), new SimpleBlockStateProvider(Blocks.cobblestone_rock.getDefaultState())));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_cobblestone_rock = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "cobblestone_rock"));
@@ -127,12 +133,12 @@ public class Features {
   public static void register() {
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "rock"), feature_rock);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "bush"), feature_bush);
+    Registry.register(Registry.FEATURE, new Identifier(Main.ID, "clone"), feature_clone);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "log_pile"), feature_log_pile);
 
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_trees_oak.getValue(), configured_trees_oak);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_trees_oak.getValue(), placed_trees_oak);
-    
-    Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_trees_big_oak.getValue(), configured_trees_big_oak);
+
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_trees_big_oak.getValue(), placed_trees_big_oak);
 
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_cobblestone_rock.getValue(), configured_cobblestone_rock);
@@ -187,6 +193,17 @@ public class Features {
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_dark_oak_bush.getValue(), configured_dark_oak_bush);
     BiomeModifications.addFeature(BiomeSelectors.includeByKey(DARK_OAK_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, key_placed_dark_oak_bush);
 
+  }
+
+  private static List<PlacementModifier> appendListOfPlacementModifiers(List<PlacementModifier> npml, PlacementModifier... epml) {
+    List<PlacementModifier> l = new ArrayList<PlacementModifier>();
+    for (PlacementModifier ep : epml) {
+      l.add(ep);
+    }
+    for (PlacementModifier np : npml) {
+      l.add(np);
+    }
+    return l;
   }
 
 }

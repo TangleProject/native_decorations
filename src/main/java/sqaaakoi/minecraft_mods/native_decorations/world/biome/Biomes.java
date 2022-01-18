@@ -19,10 +19,10 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
 public class Biomes {
 
-  public static final Biome biome_oak_forest = create_oak_forest(false);
+  public static Biome biome_oak_forest = null;
   public static final RegistryKey<Biome> key_biome_oak_forest = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.ID, "oak_forest"));
 
-  public static final Biome biome_big_oak_forest = create_oak_forest(true);
+  public static Biome biome_big_oak_forest = null;
   public static final RegistryKey<Biome> key_biome_big_oak_forest = RegistryKey.of(Registry.BIOME_KEY, new Identifier(Main.ID, "big_oak_forest"));
 
   public static Biome create_oak_forest(boolean big) {
@@ -46,6 +46,8 @@ public class Biomes {
   }
 
   public static void register() {
+    biome_oak_forest = create_oak_forest(false);
+    biome_big_oak_forest = create_oak_forest(true);
     Registry.register(BuiltinRegistries.BIOME, key_biome_oak_forest.getValue(), biome_oak_forest);
     Registry.register(BuiltinRegistries.BIOME, key_biome_big_oak_forest.getValue(), biome_big_oak_forest);
   }
