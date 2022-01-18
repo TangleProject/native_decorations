@@ -41,39 +41,44 @@ public class Features {
   private static final Feature<BushFeatureConfig> feature_bush = new BushFeature(BushFeatureConfig.CODEC);
   private static final Feature<LogPileFeatureConfig> feature_log_pile = new LogPileFeature(LogPileFeatureConfig.CODEC);
 
+  public static final ConfiguredFeature<?, ?> configured_trees_oak = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(List.of(new RandomFeatureEntry(new RandomFeatureEntry(TreePlacedFeatures.FANCY_OAK_BEES_0002, 0.1f)), TreePlacedFeatures.OAK_BEES_0002));
+  public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_trees_oak = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
+  public static final PlacedFeature placed_trees_oak = configured_trees_oak.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING));
+  public static final RegistryKey<PlacedFeature> key_placed_trees_oak = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "trees_oak"));
+
   public static final ConfiguredFeature<?, ?> configured_cobblestone_rock = feature_rock.configure(new RockFeatureConfig(ConstantIntProvider.create(40), new SimpleBlockStateProvider(Blocks.cobblestone_rock.getDefaultState())));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_cobblestone_rock = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "cobblestone_rock"));
-  public static final PlacedFeature placed_cobblestone_rock = configured_cobblestone_rock.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(6));
+  public static final PlacedFeature placed_cobblestone_rock = configured_cobblestone_rock.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_cobblestone_rock = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "cobblestone_rock"));
 
   public static final ConfiguredFeature<?, ?> configured_oak_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.oak_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.oak_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_oak_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "oak_log_pile"));
-  public static final PlacedFeature placed_oak_log_pile = configured_oak_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_oak_log_pile = configured_oak_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_oak_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "oak_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_birch_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.birch_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.birch_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_birch_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "birch_log_pile"));
-  public static final PlacedFeature placed_birch_log_pile = configured_birch_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_birch_log_pile = configured_birch_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_birch_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "birch_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_spruce_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.spruce_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.spruce_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_spruce_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "spruce_log_pile"));
-  public static final PlacedFeature placed_spruce_log_pile = configured_spruce_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_spruce_log_pile = configured_spruce_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_spruce_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "spruce_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_jungle_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.jungle_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.jungle_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_jungle_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "jungle_log_pile"));
-  public static final PlacedFeature placed_jungle_log_pile = configured_jungle_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_jungle_log_pile = configured_jungle_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_jungle_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "jungle_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_acacia_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.acacia_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.acacia_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_acacia_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "acacia_log_pile"));
-  public static final PlacedFeature placed_acacia_log_pile = configured_acacia_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_acacia_log_pile = configured_acacia_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_acacia_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "acacia_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_dark_oak_log_pile = feature_log_pile.configure(new LogPileFeatureConfig(ConstantIntProvider.create(3), ConstantIntProvider.create(5), new SimpleBlockStateProvider(Blocks.dark_oak_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.X)), new SimpleBlockStateProvider(Blocks.dark_oak_log_pile.getDefaultState().with(LogPileBlock.AXIS, Direction.Axis.Z))));
   public static final RegistryKey<ConfiguredFeature<?, ?>> key_configured_dark_oak_log_pile = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_log_pile"));
-  public static final PlacedFeature placed_dark_oak_log_pile = configured_dark_oak_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(3));
+  public static final PlacedFeature placed_dark_oak_log_pile = configured_dark_oak_log_pile.withPlacement(SquarePlacementModifier.of(), BiomePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), RarityFilterPlacementModifier.of(5));
   public static final RegistryKey<PlacedFeature> key_placed_dark_oak_log_pile = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(Main.ID, "dark_oak_log_pile"));
 
   public static final ConfiguredFeature<?, ?> configured_oak_bush = feature_bush.configure(new BushFeatureConfig(ConstantIntProvider.create(24), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, false)), new SimpleBlockStateProvider(Blocks.oak_bush.getDefaultState().with(BushyBushBlock.BUSHY_BUSH, true))));
@@ -110,6 +115,9 @@ public class Features {
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "rock"), feature_rock);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "bush"), feature_bush);
     Registry.register(Registry.FEATURE, new Identifier(Main.ID, "log_pile"), feature_log_pile);
+
+    Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_trees_oak.getValue(), configured_trees_oak);
+    Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_trees_oak.getValue(), placed_trees_oak);
 
     Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, key_configured_cobblestone_rock.getValue(), configured_cobblestone_rock);
     Registry.register(BuiltinRegistries.PLACED_FEATURE, key_placed_cobblestone_rock.getValue(), placed_cobblestone_rock);

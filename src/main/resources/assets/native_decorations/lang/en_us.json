@@ -23,5 +23,7 @@
   "block.native_decorations.paeonia": "Paeonia",
   "block.native_decorations.potted_paeonia": "Potted Paeonia",
   "block.native_decorations.rope_ladder": "Rope Ladder",
-  "item.native_decorations.twig": "Twig"
+  "item.native_decorations.twig": "Twig",
+  "biome.native_decorations.oak_forest": "Oak Forest",
+  "biome.native_decorations.big_oak_forest": "Big Oak Forest"
 }
