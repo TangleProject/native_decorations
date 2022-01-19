@@ -25,7 +25,7 @@
                   }
                 }
               ],
-              "name": "extra_decoration:diorite_rock"
+              "name": "native_decorations:diorite_rock"
             },
             {
               "type": "minecraft:item",

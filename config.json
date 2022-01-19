@@ -3,7 +3,7 @@
   "mod": {
     "id": "native_decorations",
     "name": "Native Decorations",
-    "version": "0.1"
+    "version": "0.2"
   },
   "dependencies": {
     "minecraft": "1.18.1",
