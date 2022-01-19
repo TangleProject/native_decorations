@@ -143,28 +143,28 @@ public class RopeLadderBlock extends LadderBlock implements Waterloggable {
     return false;
   }
 
-  @Override
-  public ActionResult onUse(BlockState bs, World w, BlockPos p_, PlayerEntity pl, Hand h, BlockHitResult bhr) {
-    BlockPos p = p_;
-    if (pl.shouldCancelInteraction() && !isBlockMatchingRopeLadder(bs, w, p.offset(Direction.UP))) {
-      p = p.offset(Direction.DOWN);
-      while (w.isInBuildLimit(p)) {
-        if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock && w.getBlockState(p).get(RopeLadderBlock.FACING).equals(bs.get(RopeLadderBlock.FACING))) {
-          p = p.offset(Direction.DOWN);
-        } else {
-          p = p.offset(Direction.UP);
-          if (p.equals(p_)) {
-            return ActionResult.FAIL;
-          }
-            // context.getStack().decrement(1);
-            w.setBlockState(p, w.getFluidState(p).getBlockState(), 3);
-            w.emitGameEvent(pl, GameEvent.BLOCK_DESTROY, p);
-            return ActionResult.success(w.isClient);
-        }
-      }
-      return ActionResult.FAIL;
-    }
-    return super.onUse(bs, w, p, pl, h, bhr);
-  }
+  // @Override
+  // public ActionResult onUse(BlockState bs, World w, BlockPos p_, PlayerEntity pl, Hand h, BlockHitResult bhr) {
+  //   BlockPos p = p_;
+  //   if (pl.shouldCancelInteraction() && !isBlockMatchingRopeLadder(bs, w, p.offset(Direction.UP))) {
+  //     p = p.offset(Direction.DOWN);
+  //     while (w.isInBuildLimit(p)) {
+  //       if (w.getBlockState(p).getBlock() instanceof RopeLadderBlock && w.getBlockState(p).get(RopeLadderBlock.FACING).equals(bs.get(RopeLadderBlock.FACING))) {
+  //         p = p.offset(Direction.DOWN);
+  //       } else {
+  //         p = p.offset(Direction.UP);
+  //         if (p.equals(p_)) {
+  //           return ActionResult.FAIL;
+  //         }
+  //           // context.getStack().decrement(1);
+  //           w.setBlockState(p, w.getFluidState(p).getBlockState(), 3);
+  //           w.emitGameEvent(pl, GameEvent.BLOCK_DESTROY, p);
+  //           return ActionResult.success(w.isClient);
+  //       }
+  //     }
+  //     return ActionResult.FAIL;
+  //   }
+  //   return super.onUse(bs, w, p, pl, h, bhr);
+  // }
 
 }
