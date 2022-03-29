@@ -166,7 +166,7 @@ loom {
   def awf = file("src/main/resources/${mod.id}.accesswidener")
   if (awf.exists()) {
     if (!awf.text.replace("\n", "").replace("\r", "").replace(" ", "").isEmpty()) {
-      accessWidener = awf
+      accessWidenerPath = awf
     }
   }
   runs {
