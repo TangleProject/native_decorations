@@ -76,7 +76,7 @@ if ((loginArg == null && autoLogin) || loginArg == ";") {
     def gameDir = home + "/.minecraft"
     if (os.contains("win") && System.getenv("appdata") != null) {
       gameDir = System.getenv("appdata") + "/.minecraft"
-    } else if (osType.contains("mac")) {
+    } else if (os.contains("mac")) {
       gameDir = home + "/Library/Application Support/minecraft"
     }
     accountFile = new File(gameDir, "launcher_accounts.json")
