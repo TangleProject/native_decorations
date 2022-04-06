@@ -21,7 +21,7 @@ public class LootTablePatcher {
 
   public static void patchLeavesLootTable() {
     LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, table, setter) -> {
-      for (Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntries()) {
+      for (Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntrySet()) {
         Block b = entry.getValue();
         if (entry.getKey().getValue().toString().endsWith("leaves") && b.getLootTableId().equals(id)) {
           for (LootPool p : table.pools) {
