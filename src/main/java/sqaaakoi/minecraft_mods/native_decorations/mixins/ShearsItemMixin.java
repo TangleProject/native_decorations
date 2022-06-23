@@ -1,8 +1,8 @@
-package sqaaakoi.minecraft_mods.native_decorations.mixins;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.mixins;
 
-import sqaaakoi.minecraft_mods.native_decorations.Main;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Final;

@@ -1,4 +1,4 @@
-package sqaaakoi.minecraft_mods.native_decorations.blocks;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.blocks;
 
 import java.lang.SuppressWarnings;
 import net.minecraft.block.AbstractBlock;

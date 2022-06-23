@@ -1,10 +1,10 @@
-package sqaaakoi.minecraft_mods.native_decorations;
+package xyz.sqaaakoi.minecraft_mods.native_decorations;
 
-import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
-import sqaaakoi.minecraft_mods.native_decorations.items.Items;
-import sqaaakoi.minecraft_mods.native_decorations.loot.LootTablePatcher;
-import sqaaakoi.minecraft_mods.native_decorations.world.gen.features.Features;
-import sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.items.Items;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.loot.LootTablePatcher;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features.Features;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

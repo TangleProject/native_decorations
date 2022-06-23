@@ -1,4 +1,4 @@
-package sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
 import com.mojang.serialization.Codec;
 import java.util.ArrayList;

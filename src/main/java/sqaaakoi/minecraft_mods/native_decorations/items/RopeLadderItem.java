@@ -1,6 +1,6 @@
-package sqaaakoi.minecraft_mods.native_decorations.items;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.items;
 
-import sqaaakoi.minecraft_mods.native_decorations.blocks.RopeLadderBlock;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.RopeLadderBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

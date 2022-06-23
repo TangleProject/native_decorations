@@ -1,7 +1,7 @@
-package sqaaakoi.minecraft_mods.native_decorations.loot;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.loot;
 
-import sqaaakoi.minecraft_mods.native_decorations.Main;
-import sqaaakoi.minecraft_mods.native_decorations.items.Items;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.items.Items;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.block.Block;
 import net.minecraft.tag.BlockTags;

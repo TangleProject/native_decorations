@@ -1,7 +1,7 @@
-package sqaaakoi.minecraft_mods.native_decorations.world.biome;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.world.biome;
 
-import sqaaakoi.minecraft_mods.native_decorations.Main;
-import sqaaakoi.minecraft_mods.native_decorations.world.gen.features.Features;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features.Features;
 import java.util.Arrays;
 import java.util.Collection;
 import net.minecraft.util.Identifier;

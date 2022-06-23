@@ -1,10 +1,10 @@
-package sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
-import sqaaakoi.minecraft_mods.native_decorations.Main;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.LogPileBlock;
-import sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.BushyBushBlock;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.LogPileBlock;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.world.biome.Biomes;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;

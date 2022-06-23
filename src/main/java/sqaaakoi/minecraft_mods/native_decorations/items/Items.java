@@ -1,7 +1,7 @@
-package sqaaakoi.minecraft_mods.native_decorations.items;
+package xyz.sqaaakoi.minecraft_mods.native_decorations.items;
 
-import sqaaakoi.minecraft_mods.native_decorations.Main;
-import sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
+import xyz.sqaaakoi.minecraft_mods.native_decorations.blocks.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemGroup;
