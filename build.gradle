@@ -1,5 +1,5 @@
 //  Sqaaakois Fabric Mod Build Script
-//  Version 1.4 for Minecraft 1.9
+//  Version 1.4 for Minecraft 1.19
 
 plugins {
   id 'fabric-loom' version '0.12-SNAPSHOT'
