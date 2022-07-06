@@ -10,7 +10,8 @@
     "mappings": "1.19+build.4",
     "fabric_loader": "0.14.8",
     "fabric_api": "0.56.1+1.19",
+    "modmenu": "4.0.0",
     "libraries": []
   },
-  "login": true
+  "enable_username": true
 }
