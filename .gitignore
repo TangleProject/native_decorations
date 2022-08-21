@@ -17,6 +17,7 @@ out
 # gradle
 build
 .gradle
+remappedSrc
 
 # other
 eclipse

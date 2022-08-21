@@ -1,5 +1,5 @@
 //  Sqaaakois Fabric Mod Build Script
-//  Version 1.4 for Minecraft 1.19
+//  Version 1.5 for Minecraft 1.19.2
 
 plugins {
   id 'fabric-loom' version '0.12-SNAPSHOT'
@@ -84,13 +84,15 @@ repositories {
   flatDir {
       dirs 'libs'
   }
-  maven {
-      url = 'https://maven.terraformersmc.com/releases/'
+  for (i in config.get("dependencies").get("maven_repositories")) {
+    maven {
+        url = i
+    }
   }
 }
 
 dependencies {
-  //  Nullable annotations
+  // Nullable annotations
   implementation 'com.google.code.findbugs:jsr305:3.0.2'
   // To change the versions see the dep_versions object
   minecraft "com.mojang:minecraft:${dep_versions.minecraft}"
@@ -99,14 +101,18 @@ dependencies {
 
   // Fabric API. This is technically optional, but you probably want it anyway.
   modImplementation "net.fabricmc.fabric-api:fabric-api:${dep_versions.fabric_api}"
-  // Mod Menu
-  modImplementation "com.terraformersmc:modmenu:${dep_versions.modmenu}"
 
-for (libfile in config.get("mod").get("libs")) {
-  modImplementation name: libfile
-  modCompile name: libfile
-}
 
+  for (i in config.get("dependencies").get("libraries")) {
+    modImplementation i
+  }
+  for (i in config.get("dependencies").get("libraries_compile")) {
+    modCompile i
+  }
+  for (libfile in config.get("dependencies").get("library_files")) {
+    modImplementation name: libfile
+    modCompile name: libfile
+  }
 
   // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
   // You may need to force-disable transitiveness on them.
