@@ -7,14 +7,14 @@
   },
   "dependencies": {
     "minecraft": "1.19.2",
-    "mappings": "1.19.2+build.8",
-    "fabric_loader": "0.14.9",
-    "fabric_api": "0.60.0+1.19.2",
+    "mappings": "1.19.2+build.28",
+    "fabric_loader": "0.14.10",
+    "fabric_api": "0.64.0+1.19.2",
     "maven_repositories": [
       "https://maven.terraformersmc.com/releases/"
     ],
     "libraries": [
-      "com.terraformersmc:modmenu:4.0.6"
+      "com.terraformersmc:modmenu:4.1.0"
     ],
     "libraries_compile": [
     ],
