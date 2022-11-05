@@ -130,7 +130,7 @@ loom {
       inherit client
       name = "Run Client"
       runDir "runClient"
-      remapArchives = true
+      // remapArchives = true
       if (username.length() > 0) {
         programArgs "--username", username
       }
@@ -139,7 +139,7 @@ loom {
       inherit server
       name = "Run Server"
       runDir "runServer"
-      remapArchives = true
+      // remapArchives = true
     }
   }
 }
