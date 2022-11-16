@@ -46,64 +46,11 @@ boolean enableUsername = config.get("enable_username")
 def usernameArgument = project.getProperties().get("username")
 def username = ""
 
-<<<<<<< HEAD
-def loginArg = project.getProperties().get("l")
-def profile = [
-  use: true,
-  login: false,
-  name: "",
-  id: "",
-  token: "",
-  type: ""
-]
-
-// What the fuck is this shit.
-if ((loginArg == null && autoLogin) || loginArg == ";") {
-  File accountFile = null;
-  if (loginFile == null) {
-    def home = System.getProperty("user.home", ".")
-    def os = System.getProperty("os.name").toLowerCase(Locale.ENGLISH)
-    def gameDir = home + "/.minecraft"
-    if (os.contains("win") && System.getenv("appdata") != null) {
-      gameDir = System.getenv("appdata") + "/.minecraft"
-    } else if (os.contains("mac")) {
-      gameDir = home + "/Library/Application Support/minecraft"
-    }
-    accountFile = new File(gameDir, "launcher_accounts.json")
-  } else {
-    accountFile = new File(loginFile);
-  }
-  if (!accountFile.exists()) {
-    profile.use = false
-  } else {
-    def json = new JsonSlurper()
-    def accounts = json.parseText(accountFile.text)
-    def account = accounts.get("accounts").get(accounts.get("activeAccountLocalId"))
-    profile.name = account.get("minecraftProfile").get("name")
-    profile.id = account.get("minecraftProfile").get("id")
-    // WARNING: This value may be an empty string, as the value is now stored in the credential manager as MCL|id
-    // try {
-    //   def lid = accounts.get("activeAccountLocalId")
-    //   Keyring kr = Keyring.create();
-    //   println "MCL|" + lid
-    //   println "Token for account " + account.get("minecraftProfile").get("id") + " has been loaded"
-    //   println profile.token
-    // } catch ( com.github.javakeyring.PasswordAccessException ex ) {
-    //   println "Token for account " + account.get("minecraftProfile").get("id") + " has failed to load"
-    //   println ex
-    // }
-    profile.type = account.get("type").toLowerCase()
-    profile.login = true
-  }
-} else if ((loginArg == null && !autoLogin) || loginArg == "/") {
-  profile.use = false
-=======
 if (usernameArgument == null && enableUsername) {
   username = System.getProperty("user.name").replaceAll(" ", "_")
   username = username.substring(0, Math.min(username.length(), 16));
 } else if (username.length <= 0) {
   username = "";
->>>>>>> template/main
 } else {
   username = usernameArgument;
 }
