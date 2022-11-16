@@ -6,11 +6,20 @@
     "version": "0.2"
   },
   "dependencies": {
-    "minecraft": "1.18.2",
-    "mappings": "1.18.2+build.1",
-    "fabric_loader": "0.13.3",
-    "fabric_api": "0.48.0+1.18.2",
-    "libraries": []
+    "minecraft": "1.19.2",
+    "mappings": "1.19.2+build.28",
+    "fabric_loader": "0.14.10",
+    "fabric_api": "0.64.0+1.19.2",
+    "maven_repositories": [
+      "https://maven.terraformersmc.com/releases/"
+    ],
+    "libraries": [
+      "com.terraformersmc:modmenu:4.1.0"
+    ],
+    "libraries_compile": [
+    ],
+    "library_files": [
+    ]
   },
-  "login": true
+  "enable_username": true
 }
