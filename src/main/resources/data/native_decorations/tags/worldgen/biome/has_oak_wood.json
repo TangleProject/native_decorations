@@ -10,8 +10,6 @@
     "minecraft:savanna",
     "minecraft:savanna_plateau",
     "minecraft:windswept_forest",
-    "minecraft:swamp",
-    "native_decorations:oak_forest",
-    "native_decorations:big_oak_forest"
+    "minecraft:swamp"
   ]
 }
