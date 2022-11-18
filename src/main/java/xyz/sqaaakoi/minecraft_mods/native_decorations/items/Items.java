@@ -35,7 +35,6 @@ public class Items {
   public static Item crimson_stem_pile = new BlockItem(Blocks.crimson_stem_pile, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item warped_stem_pile = new BlockItem(Blocks.warped_stem_pile, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item paeonia = new BlockItem(Blocks.paeonia, new Item.Settings().group(ItemGroup.DECORATIONS));
-  public static Item rope_ladder = new RopeLadderItem(Blocks.rope_ladder, new Item.Settings().group(ItemGroup.DECORATIONS));
   public static Item twig = new Item(new Item.Settings().group(ItemGroup.MISC));
 
   public static void register() {
@@ -61,7 +60,6 @@ public class Items {
     Registry.register(Registry.ITEM, new Identifier(Main.ID, "crimson_stem_pile"), crimson_stem_pile);
     Registry.register(Registry.ITEM, new Identifier(Main.ID, "warped_stem_pile"), warped_stem_pile);
     Registry.register(Registry.ITEM, new Identifier(Main.ID, "paeonia"), paeonia);
-    Registry.register(Registry.ITEM, new Identifier(Main.ID, "rope_ladder"), rope_ladder);
     Registry.register(Registry.ITEM, new Identifier(Main.ID, "twig"), twig);
   }
 

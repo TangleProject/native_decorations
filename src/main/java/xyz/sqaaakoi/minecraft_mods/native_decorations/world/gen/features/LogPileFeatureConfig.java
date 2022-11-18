@@ -2,7 +2,6 @@ package xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Random;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;

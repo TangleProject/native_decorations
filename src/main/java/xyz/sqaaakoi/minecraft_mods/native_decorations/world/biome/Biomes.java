@@ -7,9 +7,12 @@ import java.util.Collection;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.util.math.Direction;
+import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
 import net.minecraft.sound.BiomeMoodSound;
+import net.minecraft.tag.BiomeTags;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.SpawnSettings;
@@ -18,6 +21,7 @@ import net.minecraft.world.biome.OverworldBiomeCreator;
 import net.minecraft.world.biome.source.util.VanillaBiomeParameters;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class Biomes {
 
@@ -43,8 +47,8 @@ public class Biomes {
     DefaultBiomeFeatures.addForestGrass(gens);
 
     //  Custom trees (oak only)
-    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, Features.placed_trees_oak);
-    return OverworldBiomeCreator.createBiome(Biome.Precipitation.RAIN, Biome.Category.FOREST, 0.7f, 0.8f, sps, gens, null);
+    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, RegistryEntry.of(Features.placed_trees_oak));
+    return OverworldBiomeCreator.createBiome(Biome.Precipitation.RAIN, 0.7f, 0.8f, sps, gens, null);
   }
 
   public static Biome create_big_oak_forest() {
@@ -62,8 +66,9 @@ public class Biomes {
     DefaultBiomeFeatures.addDefaultFlowers(gens);
     DefaultBiomeFeatures.addForestGrass(gens);
     //  Custom trees (oak only)
-    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, Features.placed_trees_big_oak);
-    return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).temperature(0.7f).downfall(0.8f).effects(new BiomeEffects.Builder().grassColor(0x3ec836).foliageColor(0x1cbd14).waterColor(0x38a5db).waterFogColor(0x032436).fogColor(0xc0d8ff).skyColor(OverworldBiomeCreator.getSkyColor(0.7f)).moodSound(BiomeMoodSound.CAVE).music(null).build()).spawnSettings(sps.build()).generationSettings(gens.build()).build();
+    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, RegistryEntry.of(Features.placed_trees_big_oak));
+    gens.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.MUSHROOM_ISLAND_VEGETATION);
+    return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).temperature(0.7f).downfall(0.8f).effects(new BiomeEffects.Builder().grassColor(0x3ec836).foliageColor(0x1cbd14).waterColor(0x38a5db).waterFogColor(0x032436).fogColor(0xc0d8ff).skyColor(OverworldBiomeCreator.getSkyColor(0.7f)).moodSound(BiomeMoodSound.CAVE).music(null).build()).spawnSettings(sps.build()).generationSettings(gens.build()).build();
   }
 
   public static void register() {

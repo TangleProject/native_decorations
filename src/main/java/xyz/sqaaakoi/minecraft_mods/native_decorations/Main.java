@@ -19,7 +19,8 @@ public class Main implements ModInitializer {
     Blocks.register();
     Items.register();
     LootTablePatcher.patch();
-    Biomes.register();
+    // sorry, biomes are unfinished for now, will be adding in next update
+    // Biomes.register();
     Features.register();
   }
 }

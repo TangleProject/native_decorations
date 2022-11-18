@@ -1,13 +1,12 @@
 package xyz.sqaaakoi.minecraft_mods.native_decorations.blocks;
 
 import xyz.sqaaakoi.minecraft_mods.native_decorations.Main;
-import xyz.sqaaakoi.minecraft_mods.native_decorations.items.Items;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.FlowerPotBlock;
-import net.minecraft.block.SlabBlock;
-import net.minecraft.block.StairsBlock;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.block.Material;
-import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -34,9 +33,8 @@ public class Blocks {
   public static LogPileBlock dark_oak_log_pile = new LogPileBlock();
   public static LogPileBlock crimson_stem_pile = new LogPileBlock(LogPileBlock.NETHER_SETTINGS);
   public static LogPileBlock warped_stem_pile = new LogPileBlock(LogPileBlock.NETHER_SETTINGS);
-  public static FakeFlowerBlock paeonia = new FakeFlowerBlock(Block.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+  public static FlowerBlock paeonia = new FlowerBlock(StatusEffects.REGENERATION, 8, Block.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offsetType(AbstractBlock.OffsetType.XZ));
   public static FlowerPotBlock potted_paeonia = new FlowerPotBlock(paeonia, Block.Settings.of(Material.DECORATION).breakInstantly().nonOpaque());
-  public static RopeLadderBlock rope_ladder = new RopeLadderBlock(Block.Settings.of(Material.DECORATION).strength(0.1f, 0.2f).sounds(BlockSoundGroup.LADDER).nonOpaque());
 
   public static void register() {
     Registry.register(Registry.BLOCK, new Identifier(Main.ID, "stone_rock"), stone_rock);
@@ -62,6 +60,5 @@ public class Blocks {
     Registry.register(Registry.BLOCK, new Identifier(Main.ID, "warped_stem_pile"), warped_stem_pile);
     Registry.register(Registry.BLOCK, new Identifier(Main.ID, "paeonia"), paeonia);
     Registry.register(Registry.BLOCK, new Identifier(Main.ID, "potted_paeonia"), potted_paeonia);
-    Registry.register(Registry.BLOCK, new Identifier(Main.ID, "rope_ladder"), rope_ladder);
   }
 }

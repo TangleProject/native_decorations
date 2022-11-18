@@ -1,16 +1,14 @@
 package xyz.sqaaakoi.minecraft_mods.native_decorations.blocks;
 
-import java.util.Random;
 import java.lang.SuppressWarnings;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.util.function.BooleanBiFunction;

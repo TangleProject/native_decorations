@@ -49,6 +49,5 @@ public class RenderLayersMixin {
     RenderLayer c = RenderLayer.getCutout();
     BLOCKS.put(Blocks.paeonia, c);
     BLOCKS.put(Blocks.potted_paeonia, c);
-    BLOCKS.put(Blocks.rope_ladder, c);
   }
 }

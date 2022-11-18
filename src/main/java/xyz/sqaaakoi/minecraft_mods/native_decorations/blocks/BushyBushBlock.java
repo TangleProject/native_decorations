@@ -1,31 +1,18 @@
 package xyz.sqaaakoi.minecraft_mods.native_decorations.blocks;
 
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 import java.lang.SuppressWarnings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
-import net.minecraft.block.Fertilizable;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.stat.Stats;
 import net.minecraft.world.World;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldEvents;
 import net.minecraft.server.world.ServerWorld;
 
 public class BushyBushBlock extends BushBlock {

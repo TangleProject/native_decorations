@@ -1,10 +1,9 @@
 package xyz.sqaaakoi.minecraft_mods.native_decorations.blocks;
 
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 import java.lang.SuppressWarnings;
 import net.minecraft.block.Block;
 import net.minecraft.block.FallingBlock;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.MapColor;
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;

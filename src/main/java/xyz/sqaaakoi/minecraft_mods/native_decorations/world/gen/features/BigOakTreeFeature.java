@@ -1,7 +1,7 @@
 package xyz.sqaaakoi.minecraft_mods.native_decorations.world.gen.features;
 
 import com.mojang.serialization.Codec;
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
@@ -21,6 +21,6 @@ public class BigOakTreeFeature extends Feature<DefaultFeatureConfig> {
     StructureWorldAccess w = context.getWorld();
     ChunkGenerator g = context.getGenerator();
     BlockPos p = context.getOrigin();
-    return TreePlacedFeatures.FANCY_OAK_BEES_0002.generateUnregistered(w, g, r, p);
+    return TreePlacedFeatures.FANCY_OAK_BEES_0002.value().generateUnregistered(w, g, r, p);
   }
 }
